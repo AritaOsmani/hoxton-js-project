@@ -1,0 +1,243 @@
+{
+  "cakes": [
+    {
+      "id": 1,
+      "title": "Candy cane buttercream cake",
+      "image": "images/cake_1.jpg",
+      "price": 30,
+      "type": "christmas",
+      "orderNumber": 3,
+      "likes": 10,
+      "dislikes": 2
+    },
+    {
+      "id": 2,
+      "title": "Christmas tree stump with Swedish gnome",
+      "image": "images/cake_2.jpg",
+      "price": 20,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 15,
+      "dislikes": 2
+    },
+    {
+      "id": 3,
+      "title": "Afternoon tea (floral tea set)",
+      "image": "images/cake_3.jpg",
+      "price": 25,
+      "type": "birthdays",
+      "orderNumber": 3,
+      "likes": 50,
+      "dislikes": 2
+    },
+    {
+      "id": 4,
+      "title": "Down on the farm",
+      "image": "images/cake_4.jpg",
+      "price": 25,
+      "type": "birthdays",
+      "orderNumber": 5,
+      "likes": 20,
+      "dislikes": 3
+    },
+    {
+      "id": 5,
+      "title": "Pastel party and drips with party treats (extra deep)",
+      "image": "images/cake_5.jpg",
+      "price": 15,
+      "type": "birthdays",
+      "orderNumber": 7,
+      "likes": 100,
+      "dislikes": 3
+    },
+    {
+      "id": 6,
+      "title": "Batman's Batmobile cake",
+      "image": "images/cake_6.jpg",
+      "price": 20,
+      "type": "birthdays",
+      "orderNumber": 6,
+      "likes": 25,
+      "dislikes": 3
+    },
+    {
+      "id": 7,
+      "title": "Handbag and champagne",
+      "image": "images/cake_7.jpg",
+      "price": 40,
+      "type": "birthdays",
+      "orderNumber": 5,
+      "likes": 60,
+      "dislikes": 3
+    },
+    {
+      "id": 8,
+      "title": "My Little Pony rainbow and flowers",
+      "image": "images/cake_8.jpg",
+      "price": 25,
+      "type": "birthdays",
+      "orderNumber": 50,
+      "likes": 150,
+      "dislikes": 3
+    },
+    {
+      "id": 9,
+      "title": "Retro Christmas",
+      "image": "images/cake_9.jpg",
+      "price": 15,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 20,
+      "dislikes": 3
+    },
+    {
+      "id": 10,
+      "title": "Christmas buttercream wreath",
+      "image": "images/cake_10.jpg",
+      "price": 25,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 20,
+      "dislikes": 3
+    },
+    {
+      "id": 11,
+      "title": "Quality Christmas",
+      "image": "images/cake_11.jpg",
+      "price": 25,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 70,
+      "dislikes": 3
+    },
+    {
+      "id": 12,
+      "title": "Crappy Christmas",
+      "image": "images/cake_12.jpg",
+      "price": 20,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 200,
+      "dislikes": 3
+    },
+    {
+      "id": 13,
+      "title": "Christmas drip cake - extra deep",
+      "image": "images/cake_13.jpg",
+      "price": 15,
+      "type": "christmas",
+      "orderNumber": 5,
+      "likes": 30,
+      "dislikes": 3
+    },
+    {
+      "id": 14,
+      "title": "Mr & Mrs",
+      "image": "images/cake_14.jpg",
+      "price": 50,
+      "type": "weddings",
+      "orderNumber": 5,
+      "likes": 30,
+      "dislikes": 3
+    },
+    {
+      "id": 15,
+      "title": "Celebrate your love",
+      "image": "images/cake_15.jpg",
+      "price": 80,
+      "type": "weddings",
+      "orderNumber": 50,
+      "likes": 100,
+      "dislikes": 3
+    },
+    {
+      "id": 16,
+      "title": "Country Wedding",
+      "image": "images/cake_16.jpg",
+      "price": 80,
+      "type": "weddings",
+      "orderNumber": 20,
+      "likes": 100,
+      "dislikes": 3
+    },
+    {
+      "id": 17,
+      "title": "The Cascade",
+      "image": "images/cake_17.jpg",
+      "price": 75,
+      "type": "weddings",
+      "orderNumber": 30,
+      "likes": 20,
+      "dislikes": 3
+    },
+    {
+      "id": 18,
+      "title": "Chocolate Dream",
+      "image": "images/cake_18.jpg",
+      "price": 90,
+      "type": "weddings",
+      "orderNumber": 5,
+      "likes": 20,
+      "dislikes": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "First cake comment",
+      "cakeId": 1
+    },
+    {
+      "id": 2,
+      "body": "Second cake comment",
+      "cakeId": 2
+    },
+    {
+      "id": 3,
+      "body": "Third cake comment",
+      "cakeId": 3
+    }
+  ],
+  "users": [
+    {
+      "id": "arita@email.com",
+      "name": "Arita",
+      "surname": "Osmani",
+      "password": "arita",
+      "orders": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "besim@email.com",
+      "name": "Besim",
+      "surname": "Sokoli",
+      "password": "besim",
+      "orders": [
+        {
+          "id": 1,
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "quantity": 2
+        },
+        {
+          "id": 3,
+          "quantity": 2
+        }
+      ]
+    }
+  ]
+}
