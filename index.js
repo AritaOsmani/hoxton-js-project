@@ -126,11 +126,46 @@ function createCakeCard(cake) {
 function getCakesFromServer() {
     return fetch('http://localhost:3000/cakes').then(res => res.json());
 }
+function renderFooter(){
 
+    const logoTitleEl = document.createElement('h2')
+    logoTitleEl.setAttribute('class','logo-title')
+    logoTitleEl.textContent = 'Albulena Cakes'
+
+    const socialMediaEl = document.createElement('div')
+    socialMediaEl.setAttribute('class','social-media')
+
+    const pEl = document.createElement('p')
+    pEl.textContent = 'Contact Us:'
+
+    const facebookTagEl = document.createElement('a')
+    facebookTagEl.setAttribute('href','https://www.facebook.com/albulena.cakes/')
+    facebookTagEl.setAttribute('target','_blank')
+    facebookTagEl.textContent = 'Facebook'
+    const fbImageEl = document.createElement('img')
+    fbImageEl.setAttribute('src','images/facebook.svg')
+    fbImageEl.setAttribute('alt','facebook-logo')
+
+    const instagramTagEl = document.createElement('a')
+    instagramTagEl.setAttribute('href','https://www.instagram.com/albulena.cakes/')
+    instagramTagEl.setAttribute('target','_blank')
+    instagramTagEl.textContent = 'Instagram'
+    const inImageEl = document.createElement('img')
+    inImageEl.setAttribute('src','images/instagram.svg')
+    inImageEl.setAttribute('alt','instagram-logo')
+
+    document.body.append(footerEl)
+    footerEl.append(logoTitleEl, socialMediaEl)
+    socialMediaEl.append(pEl, facebookTagEl, instagramTagEl)
+    facebookTagEl.append(fbImageEl)
+    instagramTagEl.append(inImageEl)
+
+}
 function render() {
     document.body.innerHTML = '';
     renderHeader()
-    renderMain();
+    renderMain()
+    renderFooter()
 }    
 function init() {
     getCakesFromServer().then(cake => {
