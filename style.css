@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playball&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Playball&family=Roboto&display=swap');
 :root{
     --pink:#c94350;
     --white: #fff;
@@ -88,9 +88,13 @@ main{
     background-color: var(--white);
     height:100vh;
 }
+.image-container img{
+    border:solid 1px rgba(0, 0,0, 0.2);
+    border-radius: 10px;
+}
 .cake-prop-container{
     display: grid;
-    grid-template-rows: 80px 70px auto 50px;
+    grid-template-rows: 85px 70px auto 50px;
     height:55vh;
     /* border:solid 1px black; */
     padding:20px;
@@ -100,12 +104,14 @@ main{
 .cake-prop-container h1{
    font-size: 37px;
    text-align: center;
+   font-family: 'Courgette', cursive;
+   font-weight: lighter;
+   color:#6B011F;
 }
 .price-type-likes-container{
     display: grid;
     grid-template-columns: repeat(3,auto);
-    
-    gap:20px;
+    gap:25px;
     justify-content: center;
     /* border:solid 1px black; */
 }
@@ -132,11 +138,14 @@ main{
     color:var(--pink);
 }
 .cake_desc{
-    border:solid 1px rgba(0, 0, 0, 0.1);
-    padding:10px  20px;
-    width: 40ch;
+    border:solid 1px rgba(201, 67, 80, 0.3);
+    color:#4A403A;
+    border-radius: 10px;
+    padding:15px  20px;
+    width: 50ch;
     justify-self: center;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 .order_btn{
     width:50%;

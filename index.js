@@ -125,7 +125,7 @@ function renderDetailsPage(cake) {
 
     const cakeDescription = document.createElement('p');
     cakeDescription.setAttribute('class', 'cake_desc');
-    cakeDescription.textContent = 'This delicious 3-tiered chocolate sponge is covered in Belgian chocolate with malt balls and fresh flowers';
+    cakeDescription.textContent = cake.description;
 
     const buttonEl = document.createElement('button');
     buttonEl.setAttribute('class', 'order_btn');
