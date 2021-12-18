@@ -9,6 +9,76 @@ function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
     return itemsToDisplay;
 }
+function renderHeader(){
+    
+    const logoEl = document.createElement('img')
+    logoEl.setAttribute('class','official-logo')
+    logoEl.setAttribute('src','images/cake-logo.png')
+    logoEl.setAttribute('alt','Albulena Cakes logo')
+
+
+    const navEl = document.createElement('nav')
+    navEl.setAttribute('class','navigation-bar')
+
+    const leftMenuHeaderEl = document.createElement('ul')
+    leftMenuHeaderEl.setAttribute('class','header-menu')
+    const homeLiEl = document.createElement('li')
+    homeLiEl.setAttribute('class','header-menu__item')
+    homeLiEl.textContent = 'Home'
+
+    const bestSellingLiEl = document.createElement('li')
+    bestSellingLiEl.setAttribute('class','header-menu__item')
+    bestSellingLiEl.textContent = 'Bestselling'
+
+    const categoryLiEl = document.createElement('li')
+    categoryLiEl.setAttribute('class','header-menu__item')
+
+    const selectEl = document.createElement('select')
+
+    const categoryOptionEl = document.createElement('option')
+    categoryOptionEl.setAttribute('disabled', 'disabled')
+    categoryOptionEl.setAttribute('selected','selected')
+    categoryOptionEl.textContent = 'Category'
+
+    const exampleOption = document.createElement('option')
+    exampleOption.setAttribute('value','')
+    exampleOption.textContent = 'Example'
+    const exampleOption2 = document.createElement('option')
+    exampleOption2.setAttribute('value','')
+    exampleOption2.textContent = 'Example 2'
+
+
+
+    const rightMenuHeaderEl = document.createElement('ul')
+    rightMenuHeaderEl.setAttribute('class','header-menu')
+    const searchLiEl = document.createElement('li')
+    searchLiEl.setAttribute('class','header-menu__item')
+
+    const searchButton = document.createElement('button')
+    const searchIconEl = document.createElement('i')
+    searchIconEl.classList.add('fas')
+    searchIconEl.classList.add('fa-search')
+
+    const userLiEl = document.createElement('li')
+    userLiEl.setAttribute('class','header-menu__item')
+
+    const userButton = document.createElement('button')
+    const userIconEl = document.createElement('i')
+    userIconEl.classList.add('fas')
+    userIconEl.classList.add('fa-user')
+
+    document.body.append(headerEl)
+    headerEl.append(logoEl,navEl)
+    navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
+    leftMenuHeaderEl.append(homeLiEl, bestSellingLiEl, categoryLiEl)
+    categoryLiEl.append(selectEl)
+    selectEl.append(categoryOptionEl, exampleOption, exampleOption2)
+    rightMenuHeaderEl.append(searchLiEl, userLiEl)
+    searchLiEl.append(searchButton)
+    searchButton.append(searchIconEl)
+    userLiEl.append(userButton)
+    userButton.append(userIconEl)
+}
 function renderMain() {
 
     const itemsToDisplay = getItemsToDisplay();
@@ -59,8 +129,9 @@ function getCakesFromServer() {
 
 function render() {
     document.body.innerHTML = '';
+    renderHeader()
     renderMain();
-}
+}    
 function init() {
     getCakesFromServer().then(cake => {
         state.cakes = cake
@@ -69,4 +140,5 @@ function init() {
     // render();
 
 }
+
 init();
