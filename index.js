@@ -3,19 +3,42 @@ const mainEl = document.createElement('main');
 const footerEl = document.createElement('footer');
 
 const state = {
-    cakes: []
+    cakes: [],
+    showBestSellings: false,
+    type: ''
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
+
+    if(state.showBestSellings){
+        itemsToDisplay = itemsToDisplay.filter(cake => cake.orderNumber >5)
+    }
+    itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
+    
     return itemsToDisplay;
 }
+function listenToLeftMenuHeader(logoEl,homeLiEl, bestSellingLiEl){
+    logoEl.addEventListener('click',function(){
+        state.showBestSellings = false
+        state.type = ''
+        render()
+    })
+    homeLiEl.addEventListener('click',function(){
+        state.showBestSellings = false
+        state.type = ''
+        render()
+    })
+    bestSellingLiEl.addEventListener('click',function(){
+        state.showBestSellings = true
+        render()
+    })
+}
 function renderHeader() {
-
+    headerEl.innerHTML = ''
     const logoEl = document.createElement('img')
     logoEl.setAttribute('class', 'official-logo')
     logoEl.setAttribute('src', 'images/cake-logo.png')
     logoEl.setAttribute('alt', 'Albulena Cakes logo')
-
 
     const navEl = document.createElement('nav')
     navEl.setAttribute('class', 'navigation-bar')
@@ -34,20 +57,21 @@ function renderHeader() {
     categoryLiEl.setAttribute('class', 'header-menu__item')
 
     const selectEl = document.createElement('select')
+    selectEl.setAttribute('name','filter-by-type')
 
     const categoryOptionEl = document.createElement('option')
-    categoryOptionEl.setAttribute('disabled', 'disabled')
-    categoryOptionEl.setAttribute('selected', 'selected')
+    categoryOptionEl.setAttribute('value', '')
     categoryOptionEl.textContent = 'Category'
 
-    const exampleOption = document.createElement('option')
-    exampleOption.setAttribute('value', '')
-    exampleOption.textContent = 'Example'
-    const exampleOption2 = document.createElement('option')
-    exampleOption2.setAttribute('value', '')
-    exampleOption2.textContent = 'Example 2'
-
-
+    const christmasOption = document.createElement('option')
+    christmasOption.setAttribute('value', 'christmas')
+    christmasOption.textContent = 'Christmas'
+    const birthdaysOption = document.createElement('option')
+    birthdaysOption.setAttribute('value', 'birthdays')
+    birthdaysOption.textContent = 'Birthdays'
+    const weddingsOption = document.createElement('option')
+    weddingsOption.setAttribute('value', 'weddings')
+    weddingsOption.textContent = 'Weddings'
 
     const rightMenuHeaderEl = document.createElement('ul')
     rightMenuHeaderEl.setAttribute('class', 'header-menu')
@@ -72,30 +96,47 @@ function renderHeader() {
     navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
     leftMenuHeaderEl.append(homeLiEl, bestSellingLiEl, categoryLiEl)
     categoryLiEl.append(selectEl)
-    selectEl.append(categoryOptionEl, exampleOption, exampleOption2)
+    selectEl.append(categoryOptionEl, christmasOption, birthdaysOption, weddingsOption)
     rightMenuHeaderEl.append(searchLiEl, userLiEl)
     searchLiEl.append(searchButton)
     searchButton.append(searchIconEl)
     userLiEl.append(userButton)
     userButton.append(userIconEl)
+
+    listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl)
+
+    selectEl.value = state.type
+
+    selectEl.addEventListener('change',function(){
+        state.type = selectEl.value
+        console.log(selectEl.value)
+        render()
+    })
 }
 function renderMain() {
-
+    mainEl.innerHTML = ''
+    
     const itemsToDisplay = getItemsToDisplay();
+
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
-    pageTitle.textContent = 'Home';
 
+   if(state.type === '') pageTitle.textContent = 'Home'
+   if(state.showBestSellings) pageTitle.textContent = 'Bestsellings'
+   if(state.type === 'christmas') pageTitle.textContent = 'Christmas'
+   if(state.type === 'birthdays') pageTitle.textContent = 'Birthdays'
+   if(state.type === 'weddings') pageTitle.textContent = 'Weddings'
+   if(itemsToDisplay.length === 0) pageTitle.textContent = 'Nothing to show!'
+   
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
 
+    
     for (const item of itemsToDisplay) {
         const cakeCard = createCakeCard(item);
         //Append cakeCard to cakeContainer:
         cakeContainer.append(cakeCard);
     }
-
-
     mainEl.append(pageTitle, cakeContainer);
     document.body.append(mainEl);
 }
@@ -127,7 +168,7 @@ function getCakesFromServer() {
     return fetch('http://localhost:3000/cakes').then(res => res.json());
 }
 function renderFooter() {
-
+    footerEl.innerHTML = ''
     const logoTitleEl = document.createElement('h2')
     logoTitleEl.setAttribute('class', 'logo-title')
     logoTitleEl.textContent = 'Albulena Cakes'
@@ -172,7 +213,7 @@ function init() {
         state.cakes = cake
         render();
     });
-    // render();
+    render();
 
 }
 function test() {

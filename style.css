@@ -25,6 +25,7 @@ header{
 }
 .official-logo{
     width: 100px;
+    cursor: pointer;
 }
 .navigation-bar{
     display: grid;
