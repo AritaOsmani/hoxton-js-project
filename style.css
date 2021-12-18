@@ -11,6 +11,7 @@
 }
 body{
     background-color:#FFEBCC ;
+    /* background-color:var(--light-pink); */
     font-family: sans-serif;
 }
 img{
@@ -41,7 +42,13 @@ main{
     border-radius: 10px;
     background-color: var(--white);
     cursor:pointer;
+    /* background-color: #F7F7F7; */
     
+}.cake-card:hover{
+    transform: scale(1.1);
+    transition: 1s;
+    background-color: #F7F7F7;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .cake-card img{
     border-radius: 10px;
@@ -67,4 +74,34 @@ main{
     font-weight: bold;
     color:#A9333A;
     font-size:20px;
+}
+
+
+/*Details Page*/
+.main-container{
+    display: grid;
+    grid-template-columns: 500px auto;
+    place-content: center;
+    gap:20px;
+}
+.cake-prop-container{
+    display: grid;
+    grid-template-rows: 70px 50px auto 50px;
+    height:60vh;
+    border:solid 1px black;
+    padding:20px;
+    gap:5px;
+}
+.cake-prop-container h1{
+    border:solid 1px black;
+}
+.price-type-likes-container{
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+    gap:5px;
+    justify-content: center;
+    border:solid 1px black;
+}
+.cake_desc{
+    border:solid 1px black;
 }

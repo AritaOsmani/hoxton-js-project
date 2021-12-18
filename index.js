@@ -10,8 +10,8 @@ function getItemsToDisplay() {
     return itemsToDisplay;
 }
 function renderMain() {
-
     const itemsToDisplay = getItemsToDisplay();
+
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
     pageTitle.textContent = 'Home';
@@ -20,8 +20,9 @@ function renderMain() {
     cakeContainer.setAttribute('class', 'cake-cards-container');
 
     for (const item of itemsToDisplay) {
+
         const cakeCard = createCakeCard(item);
-        //Append cakeCard to cakeContainer:
+
         cakeContainer.append(cakeCard);
     }
 
