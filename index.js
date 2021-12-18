@@ -4,6 +4,7 @@ const footerEl = document.createElement('footer');
 
 const state = {
     cakes: [],
+    selectedItem: ''
 
 }
 function getItemsToDisplay() {
@@ -11,24 +12,18 @@ function getItemsToDisplay() {
     return itemsToDisplay;
 }
 function renderMain() {
-    const itemsToDisplay = getItemsToDisplay();
-
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
     pageTitle.textContent = 'Home';
 
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
-
-    for (const item of itemsToDisplay) {
-
-        const cakeCard = createCakeCard(item);
-
-        cakeContainer.append(cakeCard);
+    if (state.selectedItem !== '') {
+        renderDetailsPage(state.selectedItem);
+    } else {
+        renderCardItems(cakeContainer);
+        mainEl.append(pageTitle, cakeContainer);
     }
-
-
-    mainEl.append(pageTitle, cakeContainer);
     document.body.append(mainEl);
 }
 function createCakeCard(cake) {
@@ -36,7 +31,9 @@ function createCakeCard(cake) {
     cakeCard.setAttribute('class', 'cake-card');
 
     cakeCard.addEventListener('click', () => {
-        renderDetailsPage(cake);
+        // renderDetailsPage(cake);
+        state.selectedItem = cake;
+        render();
     })
     const cakeImg = document.createElement('img');
     cakeImg.setAttribute('src', cake.image);
@@ -57,6 +54,16 @@ function createCakeCard(cake) {
     //Append cakeImg and cakeInfoContainer to cakeCard:
     cakeCard.append(cakeImg, cakeInfoContainer);
     return cakeCard;
+}
+function renderCardItems(cakeContainer) {
+    const itemsToDisplay = getItemsToDisplay();
+    for (const item of itemsToDisplay) {
+
+        const cakeCard = createCakeCard(item);
+
+        cakeContainer.append(cakeCard);
+    }
+
 }
 function getCakesFromServer() {
     return fetch('http://localhost:3000/cakes').then(res => res.json());
@@ -97,7 +104,14 @@ function renderDetailsPage(cake) {
     likesContainer.setAttribute('class', 'like-section');
 
     const heartIcon = document.createElement('i');
-    heartIcon.setAttribute('class', 'far fa-heart');
+    heartIcon.setAttribute('class', 'fas fa-heart');
+
+    heartIcon.addEventListener('click', () => {
+        cake.likes++;
+        updateCakeItemInServer(cake);
+        render();
+
+    })
 
     const likes = document.createElement('span');
     likes.setAttribute('class', 'cake_likes');
@@ -130,6 +144,15 @@ function renderDetailsPage(cake) {
 function render() {
     document.body.innerHTML = '';
     renderMain();
+}
+function updateCakeItemInServer(cakeItem) {
+    fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cakeItem)
+    })
 }
 function init() {
     getCakesFromServer().then(cake => {

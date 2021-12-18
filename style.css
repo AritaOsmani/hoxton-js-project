@@ -133,8 +133,8 @@ main{
 }
 .cake_desc{
     border:solid 1px rgba(0, 0, 0, 0.1);
-    padding:10px  30px;
-    width: 50ch;
+    padding:10px  20px;
+    width: 40ch;
     justify-self: center;
     line-height: 1.5;
 }
@@ -158,9 +158,11 @@ main{
 .fas{
     font-size: 20px;
     margin-right:5px;
+    color: var(--pink);
+    cursor: pointer;
 }
-.far{
+/* .far{
     font-size: 20px;
     margin-right:5px;
     color: var(--pink);
-}
+} */
