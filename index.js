@@ -35,6 +35,9 @@ function createCakeCard(cake) {
     const cakeCard = document.createElement('div');
     cakeCard.setAttribute('class', 'cake-card');
 
+    cakeCard.addEventListener('click', () => {
+        renderDetailsPage(cake);
+    })
     const cakeImg = document.createElement('img');
     cakeImg.setAttribute('src', cake.image);
 
@@ -58,29 +61,7 @@ function createCakeCard(cake) {
 function getCakesFromServer() {
     return fetch('http://localhost:3000/cakes').then(res => res.json());
 }
-function renderDetailsPage() {
-    //     <!-- <main>
-    //     <div class="main-container">
-    //         <div class="image-container">
-    //             <img src="images\cake_1.jpg" alt="">
-    //         </div>
-    //         <div class="cake-prop-container">
-    //             <h1 class="title">Candy cane buttercream cake</h1>
-    //             <div class="price-type-likes-container">
-    //                 <span class="cake_price">50€</span>
-    //                 <span class="cake_type">Christmas</span>
-    //                 <div class="like-section">
-    //                     <i class="fas fa-heart"></i>
-    //                     <span class="cake_likes">20 likes</span>
-    //                 </div>
-
-    //             </div>
-    //             <p class="cake_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, velit.</p>
-    //             <button class="add_to_cart_btn">Add to cart</button>
-    //         </div>
-    //     </div>
-
-    // </main> -->
+function renderDetailsPage(cake) {
     mainEl.innerHTML = '';
     const mainContainer = document.createElement('div');
     mainContainer.setAttribute('class', 'main-container');
@@ -89,7 +70,7 @@ function renderDetailsPage() {
     imageAndCommContainer.setAttribute('class', 'image-container');
 
     const cakeImg = document.createElement('img');
-    cakeImg.setAttribute('src', 'images/cake_1.jpg');
+    cakeImg.setAttribute('src', cake.image);
 
     //Add cakeImg to imageAndCommContainer:
     imageAndCommContainer.append(cakeImg);
@@ -99,18 +80,18 @@ function renderDetailsPage() {
 
     const cakeTitle = document.createElement('h1');
     cakeTitle.setAttribute('class', 'title');
-    cakeTitle.textContent = 'Candy cane buttercream cake';
+    cakeTitle.textContent = cake.title;
 
     const priceTypeLikeContainer = document.createElement('div');
     priceTypeLikeContainer.setAttribute('class', 'price-type-likes-container');
 
     const cakePrice = document.createElement('span');
     cakePrice.setAttribute('class', 'cake_price');
-    cakePrice.textContent = '50€';
+    cakePrice.textContent = `${cake.price}€`;
 
     const cakeType = document.createElement('span');
     cakeType.setAttribute('class', 'cake_type');
-    cakeType.textContent = 'Christmas';
+    cakeType.textContent = cake.type;
 
     const likesContainer = document.createElement('div');
     likesContainer.setAttribute('class', 'like-section');
@@ -120,7 +101,7 @@ function renderDetailsPage() {
 
     const likes = document.createElement('span');
     likes.setAttribute('class', 'cake_likes');
-    likes.textContent = '20 likes';
+    likes.textContent = `${cake.likes} likes`;
 
     //Append heartIcon and likes to likesContainer:
     likesContainer.append(heartIcon, likes);

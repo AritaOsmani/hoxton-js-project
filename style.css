@@ -80,7 +80,7 @@ main{
 /*Details Page*/
 .main-container{
     display: grid;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 500px 600px;
     justify-content: center;
     gap:30px;
 }
@@ -90,15 +90,16 @@ main{
 }
 .cake-prop-container{
     display: grid;
-    grid-template-rows: 100px 70px auto 50px;
+    grid-template-rows: 80px 70px auto 50px;
     height:55vh;
     /* border:solid 1px black; */
     padding:20px;
-    gap:20px;
-    justify-content: center;
+    gap:10px;
+    justify-content: start;
 }
 .cake-prop-container h1{
    font-size: 37px;
+   text-align: center;
 }
 .price-type-likes-container{
     display: grid;
