@@ -81,17 +81,21 @@ main{
 .main-container{
     display: grid;
     grid-template-columns: 500px auto;
-    place-content: center;
-    gap:20px;
-    
+    justify-content: center;
+    gap:30px;
+}
+.main-class{
+    background-color: var(--white);
+    height:100vh;
 }
 .cake-prop-container{
     display: grid;
-    grid-template-rows: 100px 70px 70px 50px;
-    height:60vh;
+    grid-template-rows: 100px 70px auto 50px;
+    height:55vh;
     /* border:solid 1px black; */
     padding:20px;
     gap:20px;
+    justify-content: center;
 }
 .cake-prop-container h1{
    font-size: 37px;
@@ -100,17 +104,15 @@ main{
     display: grid;
     grid-template-columns: repeat(3,auto);
     
-    gap:10px;
+    gap:20px;
     justify-content: center;
     /* border:solid 1px black; */
 }
 
 .cake_price{
-    padding:22px 30px;
-    border-radius: 50%;
-    background-color: var(--pink);
-    color:var(--white);
-    font-size: 16px;
+    padding:17px 20px;
+    color:var(--pink);
+    font-size: 25px;
     font-weight: bold;
 }
 .cake_type{
@@ -118,20 +120,24 @@ main{
     color:var(--pink);
     font-size: 25px;
     padding:15px 20px;
+    
 }
 .cake_likes{
     font-family: 'Roboto', sans-serif;
     /* color:var(--white); */
     font-size: 17px;
-   
+    font-weight: bold;
     font-style: italic;
     color:var(--pink);
 }
 .cake_desc{
-    border:solid 1px rgba(0, 0, 0, 0.3);
-    padding: 10px;
+    border:solid 1px rgba(0, 0, 0, 0.1);
+    padding:10px  30px;
+    width: 50ch;
+    justify-self: center;
+    line-height: 1.5;
 }
-.add_to_cart_btn{
+.order_btn{
     width:50%;
     justify-self: center;
     border-radius: 30px;
@@ -143,10 +149,17 @@ main{
     cursor: pointer;
 }
 .like-section{
-    border:solid 1px rgba(0, 0, 0, 0.3);
+    /* border:solid 1px rgba(0, 0, 0, 0.3); */
     border-radius: 10px;
     padding:20px;
 }
-.fa-heart{
+/*Filled heart icon*/
+.fas{
     font-size: 20px;
+    margin-right:5px;
+}
+.far{
+    font-size: 20px;
+    margin-right:5px;
+    color: var(--pink);
 }
