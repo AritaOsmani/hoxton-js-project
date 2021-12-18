@@ -10,7 +10,7 @@ function getItemsToDisplay() {
     return itemsToDisplay;
 }
 function renderHeader() {
-
+    headerEl.innerHTML = '';
     const logoEl = document.createElement('img')
     logoEl.setAttribute('class', 'official-logo')
     logoEl.setAttribute('src', 'images/cake-logo.png')
@@ -80,7 +80,7 @@ function renderHeader() {
     userButton.append(userIconEl)
 }
 function renderMain() {
-
+    mainEl.innerHTML = ''
     const itemsToDisplay = getItemsToDisplay();
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
@@ -128,6 +128,7 @@ function getCakesFromServer() {
 }
 function renderFooter() {
 
+    footerEl.innerHTML = ''
     const logoTitleEl = document.createElement('h2')
     logoTitleEl.setAttribute('class', 'logo-title')
     logoTitleEl.textContent = 'Albulena Cakes'
@@ -172,7 +173,7 @@ function init() {
         state.cakes = cake
         render();
     });
-    // render();
+
 
 }
 function test() {
