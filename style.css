@@ -16,6 +16,59 @@ body{
 img{
     width:100%;
 }
+header{
+    background-color: var(--light-pink);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.official-logo{
+    width: 100px;
+}
+.navigation-bar{
+    display: grid;
+    justify-content: space-between;
+    grid-auto-flow: column;
+    align-items: center;
+}
+.header-menu{
+    display: grid;
+    grid-auto-flow: column;
+    list-style-type: none;
+    padding: 0.2rem;
+    border-radius: 5px;
+    gap: 1rem;
+}
+.header-menu__item{
+    display: grid;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--pink);
+}
+.header-menu__item:hover{
+    border-bottom: 1px solid var(--white);
+}
+option{
+    color:var(--pink);
+}
+select{
+    border: none;
+    outline: none;
+    background-color: var(--light-pink);
+    color: var(--pink);
+    cursor: pointer;
+    font-size: 1rem;
+}
+button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.fas{
+    color: var(--pink);
+}
 main{
     padding:20px;
 }
