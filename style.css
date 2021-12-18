@@ -121,3 +121,29 @@ main{
     color:#A9333A;
     font-size:20px;
 }
+footer{
+    background-color: #FAC3BE;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: #c94350;
+}
+.social-media{
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.5rem;
+}
+.social-media a{
+    text-decoration: none;
+    color: #c94350;
+    font-weight: bold;
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 0.5rem;
+}
+.social-media img{
+    width: 20px;
+}
