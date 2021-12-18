@@ -3,7 +3,8 @@ const mainEl = document.createElement('main');
 const footerEl = document.createElement('footer');
 
 const state = {
-    cakes: []
+    cakes: [],
+    selectedItem: ''
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -89,19 +90,24 @@ function renderMain() {
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
 
-    for (const item of itemsToDisplay) {
-        const cakeCard = createCakeCard(item);
-        //Append cakeCard to cakeContainer:
-        cakeContainer.append(cakeCard);
+    if (state.selectedItem !== '') {
+        renderDetailsPage(state.selectedItem);
+    } else {
+        renderCardItems(cakeContainer);
+        mainEl.append(pageTitle, cakeContainer);
     }
 
-
-    mainEl.append(pageTitle, cakeContainer);
     document.body.append(mainEl);
 }
 function createCakeCard(cake) {
     const cakeCard = document.createElement('div');
     cakeCard.setAttribute('class', 'cake-card');
+
+    cakeCard.addEventListener('click', () => {
+        // renderDetailsPage(cake);
+        state.selectedItem = cake;
+        render();
+    })
 
     const cakeImg = document.createElement('img');
     cakeImg.setAttribute('src', cake.image);
@@ -123,8 +129,91 @@ function createCakeCard(cake) {
     cakeCard.append(cakeImg, cakeInfoContainer);
     return cakeCard;
 }
+function renderCardItems(cakeContainer) {
+    const itemsToDisplay = getItemsToDisplay();
+    for (const item of itemsToDisplay) {
+
+        const cakeCard = createCakeCard(item);
+
+        cakeContainer.append(cakeCard);
+    }
+
+}
 function getCakesFromServer() {
     return fetch('http://localhost:3000/cakes').then(res => res.json());
+}
+function renderDetailsPage(cake) {
+    mainEl.innerHTML = '';
+    const mainContainer = document.createElement('div');
+    mainContainer.setAttribute('class', 'main-container');
+
+    const imageAndCommContainer = document.createElement('div');
+    imageAndCommContainer.setAttribute('class', 'image-container');
+
+    const cakeImg = document.createElement('img');
+    cakeImg.setAttribute('src', cake.image);
+
+    //Add cakeImg to imageAndCommContainer:
+    imageAndCommContainer.append(cakeImg);
+
+    const cakeProperties = document.createElement('div');
+    cakeProperties.setAttribute('class', 'cake-prop-container');
+
+    const cakeTitle = document.createElement('h1');
+    cakeTitle.setAttribute('class', 'title');
+    cakeTitle.textContent = cake.title;
+
+    const priceTypeLikeContainer = document.createElement('div');
+    priceTypeLikeContainer.setAttribute('class', 'price-type-likes-container');
+
+    const cakePrice = document.createElement('span');
+    cakePrice.setAttribute('class', 'cake_price');
+    cakePrice.textContent = `${cake.price}€`;
+
+    const cakeType = document.createElement('span');
+    cakeType.setAttribute('class', 'cake_type');
+    cakeType.textContent = cake.type;
+
+    const likesContainer = document.createElement('div');
+    likesContainer.setAttribute('class', 'like-section');
+
+    const heartIcon = document.createElement('i');
+    heartIcon.setAttribute('class', 'fas fa-heart');
+
+    heartIcon.addEventListener('click', () => {
+        cake.likes++;
+        updateCakeItemInServer(cake);
+        render();
+
+    })
+
+    const likes = document.createElement('span');
+    likes.setAttribute('class', 'cake_likes');
+    likes.textContent = `${cake.likes} likes`;
+
+    //Append heartIcon and likes to likesContainer:
+    likesContainer.append(heartIcon, likes);
+
+    //Append cakePrice, cakeType and likesContainer to priceTypeLikeContainer:
+    priceTypeLikeContainer.append(cakePrice, cakeType, likesContainer);
+
+    const cakeDescription = document.createElement('p');
+    cakeDescription.setAttribute('class', 'cake_desc');
+    cakeDescription.textContent = cake.description;
+
+    const buttonEl = document.createElement('button');
+    buttonEl.setAttribute('class', 'order_btn');
+    buttonEl.textContent = 'Order now';
+
+    //Append cakeTitle,  priceTypeLikeContainer, cakeDescription and buttonEl to cakeProperties:
+    cakeProperties.append(cakeTitle, priceTypeLikeContainer, cakeDescription, buttonEl);
+
+    //Append imageAndCommContainer and cakeProperties to mainContainer:
+    mainContainer.append(imageAndCommContainer, cakeProperties);
+
+    mainEl.setAttribute('class', 'main-class');
+    mainEl.append(mainContainer);
+
 }
 function renderFooter() {
 
@@ -168,6 +257,15 @@ function render() {
     renderMain()
     renderFooter()
 }
+function updateCakeItemInServer(cakeItem) {
+    fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cakeItem)
+    })
+}
 function init() {
     getCakesFromServer().then(cake => {
         state.cakes = cake
@@ -175,9 +273,6 @@ function init() {
     });
 
 
-}
-function test() {
-    console.log('Test');
 }
 
 init();
