@@ -268,3 +268,84 @@ footer{
     margin-right:5px;
     color: var(--pink);
 } */
+
+
+/*Modal styling*/
+.modal-wrapper{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 100vh;
+    background-color: #00000030;
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+}
+.sign-in-modal{
+    display: grid;
+    border:none;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding:30px;
+    gap:25px;
+    width:300px;
+    place-items: center;
+    position:relative;
+}
+.modal-title{
+    font-size: 25px;
+    color:#6B011F;
+}
+.sign-in-modal span{
+    font-size: 10px;
+}
+.sign-in-form{
+    display: grid;
+    gap:15px;
+}
+input{
+    display: block;
+    outline: none;
+    padding: 2px 5px;
+    border-radius: 10px;
+    border:none;
+    outline:solid 1px var(--pink);
+    margin-top:5px;
+}
+label{
+    font-size: 12px;
+   /* color:#6B011F; */
+   color:#4A403A;
+}
+.close-btn{
+    position: absolute;
+    top:5px;
+    right:8px;
+    font-size: 12px;
+    color:#4A403A;
+}
+.sign-in-btn{
+    border-radius: 10px;
+    background-color: var(--pink);
+    font-size: 14px;
+    padding:5px 0;
+    color:white;
+    font-weight: bold;
+    margin-top:10px;
+}
+.no-acc{
+    color:#4A403A;
+}
+.register{
+    color:var(--pink);
+    cursor: pointer;
+}
+.register:hover{
+    text-decoration: underline;
+}
+.register-container{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap:5px;
+}

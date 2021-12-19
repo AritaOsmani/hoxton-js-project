@@ -306,6 +306,74 @@ function render() {
     renderMain()
     renderFooter()
 }
+function renderSignInModal() {
+
+
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'sign-in-modal');
+
+    const closeBtn = document.createElement('button');
+
+
+    modalWrapperElements(modal, closeBtn);
+    const modalTitle = document.createElement('h3');
+    modalTitle.setAttribute('class', 'modal-title');
+    modalTitle.textContent = 'Sign In';
+
+    const formEl = document.createElement('form');
+    formEl.setAttribute('class', 'sign-in-form');
+
+    const emailLabel = document.createElement('label');
+    emailLabel.textContent = 'Email';
+
+    const emailInput = document.createElement('input');
+    emailInput.setAttribute('type', 'email');
+
+    //Append emailInput to emailLabel:
+    emailLabel.append(emailInput);
+
+    const passwordLabel = document.createElement('label');
+    passwordLabel.textContent = 'Password';
+
+    const passwordInput = document.createElement('input');
+    passwordInput.setAttribute('type', 'password');
+
+    //Append passwordInput to passwordLabel:
+    passwordLabel.append(passwordInput);
+
+    const signInBtn = document.createElement('button');
+    signInBtn.setAttribute('class', 'sign-in-btn');
+    signInBtn.setAttribute('type', 'submit');
+    signInBtn.textContent = 'Sign In';
+
+    //Append emailLabel, passwordLabel and signInBtn to formEl:
+    formEl.append(emailLabel, passwordLabel, signInBtn);
+
+    const registerContainer = document.createElement('div');
+    registerContainer.setAttribute('class', 'register-container');
+
+    const noAccSpan = document.createElement('span');
+    noAccSpan.setAttribute('class', 'no-acc');
+    noAccSpan.textContent = `Don't have an account?`;
+
+    const registerSpan = document.createElement('span');
+    registerSpan.setAttribute('class', 'register');
+    registerSpan.textContent = 'Register now';
+
+    //Append noAccSpan and registerSpan to registerContainer:
+    registerContainer.append(noAccSpan, registerSpan);
+
+    modal.append(closeBtn, modalTitle, formEl, registerContainer);
+}
+function modalWrapperElements(modal, closeBtn) {
+    const modalWrapper = document.createElement('div');
+    modalWrapper.setAttribute('class', 'modal-wrapper');
+    closeBtn.setAttribute('class', 'close-btn');
+    closeBtn.textContent = 'X';
+
+    modalWrapper.append(modal);
+    mainEl.append(modalWrapper);
+}
 function updateCakeItemInServer(cakeItem) {
     fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
         method: "PATCH",
