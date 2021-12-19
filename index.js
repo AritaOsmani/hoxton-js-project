@@ -413,6 +413,14 @@ function renderSignInModal() {
     //Append emailLabel, passwordLabel and signInBtn to formEl:
     formEl.append(emailLabel, passwordLabel, signInBtn);
 
+    formEl.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const userEmail = emailInput.value;
+        const userPassword = passwordInput.value;
+        signIn(userEmail, userPassword);
+        render();
+    })
+
     const registerContainer = document.createElement('div');
     registerContainer.setAttribute('class', 'register-container');
 
@@ -539,6 +547,17 @@ function updateCakeItemInServer(cakeItem) {
         body: JSON.stringify(cakeItem)
     })
 }
+function signIn(email, userPassword) {
+    return fetch(`http://localhost:3000/users/${email}`).then(res => res.json()).then(user => {
+        if (user.password === userPassword) {
+            state.user = user;
+            alert('Welcome');
+        } else {
+            alert('You entered the wrong password or email');
+        }
+    })
+}
+
 function init() {
     getCakesFromServer().then(cake => {
         state.cakes = cake
