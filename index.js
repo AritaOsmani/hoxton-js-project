@@ -5,6 +5,7 @@ const footerEl = document.createElement('footer');
 const state = {
     cakes: [],
     selectedItem: '',
+    modal: '',
     showBestSellings: false,
     type: ''
 }
