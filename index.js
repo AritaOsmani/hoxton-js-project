@@ -318,6 +318,7 @@ function init() {
         state.cakes = cake
         render();
     });
+
 }
 
 init();
