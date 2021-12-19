@@ -508,7 +508,20 @@ function renderRegisterModal() {
     formEl.append(nameLabel, surnameLabel, emailLabel, passwordLabel, confirmPassLabel, createAccBtn);
     modal.append(closeBtn, modalTitle, formEl);
 }
+function renderWelcomeModal() {
 
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'welcome-modal');
+
+    const closeBtn = document.createElement('button');
+
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEL = document.createElement('h2');
+    titleEL.textContent = `Welcome ${state.user.name}!`;
+
+    modal.append(closeBtn, titleEL);
+}
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');
@@ -557,6 +570,7 @@ function signIn(email, userPassword) {
         }
     })
 }
+
 
 function init() {
     getCakesFromServer().then(cake => {

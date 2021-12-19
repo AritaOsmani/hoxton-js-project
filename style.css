@@ -388,3 +388,16 @@ label{
     padding:7px 30px;
     margin-top: 10px;
 }
+.welcome-modal{
+    background-color: var(--white);
+    position: relative;
+    display: grid;
+    gap:20px;
+    padding:30px;
+    border-radius: 10px;
+    height:150px;
+    width: 300px;
+    place-items:center ;
+    color:#6B011F;
+    font-family: 'Roboto', sans-serif;
+}
