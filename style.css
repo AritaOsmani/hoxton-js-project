@@ -173,10 +173,7 @@ footer{
     gap:30px;
     padding: 20px;
 }
-.main-class{
-    background-color: var(--white);
-    height:100vh;
-}
+
 .image-container img{
     border:solid 1px rgba(0, 0,0, 0.2);
     border-radius: 10px;
@@ -339,4 +336,9 @@ label{
 }
 .register:hover{
     text-decoration: underline;
+}
+.register-container{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap:5px;
 }
