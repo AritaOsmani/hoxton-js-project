@@ -18,8 +18,8 @@ function getItemsToDisplay() {
     }
     itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
 
-    if(state.search !== '') itemsToDisplay = itemsToDisplay.filter(cake => cake.title.toUpperCase().includes(state.search.toUpperCase()))
-    
+    if (state.search !== '') itemsToDisplay = itemsToDisplay.filter(cake => cake.title.toUpperCase().includes(state.search.toUpperCase()))
+
     return itemsToDisplay;
 }
 function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
@@ -96,7 +96,7 @@ function renderHeader() {
     const searchIconEl = document.createElement('i')
     searchIconEl.classList.add('fas')
     searchIconEl.classList.add('fa-search')
-    searchButton.addEventListener('click',function(){
+    searchButton.addEventListener('click', function () {
         state.modal = 'search'
         render()
     })
@@ -152,10 +152,10 @@ function renderMain() {
     if (state.type === 'birthdays') pageTitle.textContent = 'Birthdays'
     if (state.type === 'weddings') pageTitle.textContent = 'Weddings'
     if (itemsToDisplay.length === 0) pageTitle.textContent = 'Nothing to show!'
-    if(state.search !== ''){
+    if (state.search !== '') {
         searchMessageh4.textContent = `You are searching for: ${state.search}`
         mainEl.prepend(searchMessageh4)
-    } 
+    }
 
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
@@ -329,20 +329,20 @@ function render() {
     renderFooter()
     renderModals();
 }
-function renderSearchModal(){
+function renderSearchModal() {
     const modal = document.createElement('div')
-    modal.setAttribute('class','search-modal')
-    
-    modal.addEventListener('click',function(event){
+    modal.setAttribute('class', 'search-modal')
+
+    modal.addEventListener('click', function (event) {
         event.stopPropagation()
     })
 
     const closeBtn = document.createElement('button')
 
-    modalWrapperElements(modal,closeBtn)
+    modalWrapperElements(modal, closeBtn)
 
     const modalTitle = document.createElement('h3')
-    modalTitle.setAttribute('class','modal-title')
+    modalTitle.setAttribute('class', 'modal-title')
     modalTitle.textContent = 'Search'
 
     const searchForm = document.createElement('form')
@@ -350,13 +350,13 @@ function renderSearchModal(){
     const searchLabel = document.createElement('label');
     searchLabel.setAttribute('for', 'search');
     searchLabel.textContent = 'Search cakes by name: ';
-    
+
     const searchInput = document.createElement('input');
     searchInput.setAttribute('type', 'search');
     searchInput.setAttribute('id', 'search');
     searchInput.setAttribute('name', 'search');
 
-    searchForm.addEventListener('submit',function(event){
+    searchForm.addEventListener('submit', function (event) {
 
         event.preventDefault()
 
@@ -366,16 +366,16 @@ function renderSearchModal(){
 
         render()
     })
-    modal.append(closeBtn,modalTitle,searchForm)
+    modal.append(closeBtn, modalTitle, searchForm)
     searchForm.append(searchLabel, searchInput)
 }
 function renderSignInModal() {
     const modal = document.createElement('div');
     modal.setAttribute('class', 'sign-in-modal');
-    modal.addEventListener('click',function(event){
+    modal.addEventListener('click', function (event) {
         event.stopPropagation()
     })
-    
+
     const closeBtn = document.createElement('button');
 
 
@@ -429,6 +429,72 @@ function renderSignInModal() {
 
     modal.append(closeBtn, modalTitle, formEl, registerContainer);
 }
+function renderRegisterModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'register-modal');
+
+    const closeBtn = document.createElement('button');
+    modalWrapperElements(modal, closeBtn);
+
+    const modalTitle = document.createElement('h2');
+    modalTitle.textContent = 'Register';
+
+    const formEl = document.createElement('form');
+    formEl.setAttribute('class', 'register-form');
+
+    const nameLabel = document.createElement('label');
+    nameLabel.textContent = 'Name';
+
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('type', 'text');
+
+    //Append nameInput to nameLabel:
+    nameLabel.append(nameInput);
+
+    const surnameLabel = document.createElement('label');
+    surnameLabel.textContent = 'Surname';
+
+    const surnameInput = document.createElement('input');
+    surnameInput.setAttribute('type', 'text');
+
+    //Append surnameInput to surnameLabel:
+    surnameLabel.append(surnameInput);
+
+    const emailLabel = document.createElement('label');
+    emailLabel.textContent = 'Email';
+
+    const emailInput = document.createElement('input');
+    emailInput.setAttribute('type', 'email');
+
+    //Append emailInput to emailLabel:
+    emailLabel.append(emailInput);
+
+    const passwordLabel = document.createElement('label');
+    passwordLabel.textContent = 'Password';
+
+    const passwordInput = document.createElement('input');
+    passwordInput.setAttribute('type', 'password');
+
+    //Append passwordInput to passwordLabel:
+    passwordLabel.append(passwordInput);
+
+    const confirmPassLabel = document.createElement('label');
+    confirmPassLabel.textContent = 'Confirm Password';
+
+    const confirmPassInput = document.createElement('input');
+    confirmPassInput.setAttribute('type', 'password');
+
+    //Append confirmPassInput to confirmPassLabel:
+    confirmPassLabel.append(confirmPassInput);
+
+    const createAccBtn = document.createElement('button');
+    createAccBtn.setAttribute('class', 'register-btn');
+    createAccBtn.setAttribute('type', 'submit');
+    createAccBtn.textContent = 'Create account';
+
+    formEl.append(nameLabel, surnameLabel, emailLabel, passwordLabel, confirmPassLabel, createAccBtn);
+    modal.append(closeBtn, modalTitle, formEl);
+}
 
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
@@ -436,7 +502,7 @@ function modalWrapperElements(modal, closeBtn) {
     closeBtn.setAttribute('class', 'close-btn');
     closeBtn.textContent = 'X';
 
-    modalWrapper.addEventListener('click',function(){
+    modalWrapper.addEventListener('click', function () {
         state.modal = ''
         render()
     })
@@ -452,7 +518,7 @@ function renderModals() {
     if (state.modal === 'signIn') {
         renderSignInModal();
     }
-    if(state.modal === 'search'){
+    if (state.modal === 'search') {
         renderSearchModal()
     }
 }

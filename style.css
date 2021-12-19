@@ -362,3 +362,29 @@ label{
     grid-template-columns: repeat(2,auto);
     gap:5px;
 }
+.register-modal{
+    display: grid;
+    gap:20px;
+    background-color: var(--white);
+    padding:30px;
+    width: 280px;
+    place-items: center;
+    position: relative;
+    border-radius: 10px;
+}
+.register-modal h2{
+    color:#6B011F;
+}
+.register-form{
+    display: grid;
+    gap:10px;
+}
+.register-btn{
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: var(--pink);
+    color:var(--white);
+    font-weight: bold;
+    padding:7px 30px;
+    margin-top: 10px;
+}
