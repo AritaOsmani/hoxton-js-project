@@ -424,6 +424,11 @@ function renderSignInModal() {
     registerSpan.setAttribute('class', 'register');
     registerSpan.textContent = 'Register now';
 
+    registerSpan.addEventListener('click', () => {
+        state.modal = 'register';
+        render();
+    })
+
     //Append noAccSpan and registerSpan to registerContainer:
     registerContainer.append(noAccSpan, registerSpan);
 
@@ -520,6 +525,9 @@ function renderModals() {
     }
     if (state.modal === 'search') {
         renderSearchModal()
+    }
+    if (state.modal === 'register') {
+        renderRegisterModal();
     }
 }
 function updateCakeItemInServer(cakeItem) {
