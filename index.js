@@ -99,6 +99,11 @@ function renderHeader() {
     userIconEl.classList.add('fas')
     userIconEl.classList.add('fa-user')
 
+    userButton.addEventListener('click', () => {
+        state.modal = 'signIn';
+        render();
+    })
+
     document.body.append(headerEl)
     headerEl.append(logoEl, navEl)
     navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
@@ -305,10 +310,9 @@ function render() {
     renderHeader()
     renderMain()
     renderFooter()
+    renderModals();
 }
 function renderSignInModal() {
-
-
     const modal = document.createElement('div');
     modal.setAttribute('class', 'sign-in-modal');
 
@@ -365,14 +369,24 @@ function renderSignInModal() {
 
     modal.append(closeBtn, modalTitle, formEl, registerContainer);
 }
+
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');
     closeBtn.setAttribute('class', 'close-btn');
     closeBtn.textContent = 'X';
 
+    closeBtn.addEventListener('click', () => {
+        state.modal = '';
+        render();
+    })
     modalWrapper.append(modal);
     mainEl.append(modalWrapper);
+}
+function renderModals() {
+    if (state.modal === 'signIn') {
+        renderSignInModal();
+    }
 }
 function updateCakeItemInServer(cakeItem) {
     fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
