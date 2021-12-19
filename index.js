@@ -33,6 +33,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     })
     bestSellingLiEl.addEventListener('click', function () {
         state.showBestSellings = true
+        state.type = ''
         state.selectedItem = ''
         render()
     })
