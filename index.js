@@ -11,197 +11,127 @@ const state = {
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
 
-    if(state.showBestSellings){
+    if (state.showBestSellings) {
         itemsToDisplay = itemsToDisplay.filter(cake => cake.orderNumber > 5)
     }
     itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
-    
+
     return itemsToDisplay;
 }
-function listenToLeftMenuHeader(logoEl,homeLiEl, bestSellingLiEl){
-    logoEl.addEventListener('click',function(){
+function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
+    logoEl.addEventListener('click', function () {
         state.showBestSellings = false
         state.selectedItem = ''
         state.type = ''
         render()
     })
-    homeLiEl.addEventListener('click',function(){
+    homeLiEl.addEventListener('click', function () {
         state.showBestSellings = false
         state.type = ''
         state.selectedItem = ''
         render()
     })
-    bestSellingLiEl.addEventListener('click',function(){
+    bestSellingLiEl.addEventListener('click', function () {
         state.showBestSellings = true
         state.selectedItem = ''
         render()
     })
 }
-// function renderHeader() {
 
-//     headerEl.innerHTML = '';
-//     const logoEl = document.createElement('img')
-//     logoEl.setAttribute('class', 'official-logo')
-//     logoEl.setAttribute('src', 'images/cake-logo.png')
-//     logoEl.setAttribute('alt', 'Albulena Cakes logo')
-
-
-//     const navEl = document.createElement('nav')
-//     navEl.setAttribute('class', 'navigation-bar')
-
-//     const leftMenuHeaderEl = document.createElement('ul')
-//     leftMenuHeaderEl.setAttribute('class', 'header-menu')
-//     const homeLiEl = document.createElement('li')
-//     homeLiEl.setAttribute('class', 'header-menu__item')
-//     homeLiEl.textContent = 'Home'
-
-//     const bestSellingLiEl = document.createElement('li')
-//     bestSellingLiEl.setAttribute('class', 'header-menu__item')
-//     bestSellingLiEl.textContent = 'Bestselling'
-
-//     const categoryLiEl = document.createElement('li')
-//     categoryLiEl.setAttribute('class', 'header-menu__item')
-
-//     const selectEl = document.createElement('select')
-
-//     const categoryOptionEl = document.createElement('option')
-//     categoryOptionEl.setAttribute('disabled', 'disabled')
-//     categoryOptionEl.setAttribute('selected', 'selected')
-//     categoryOptionEl.textContent = 'Category'
-
-//     const exampleOption = document.createElement('option')
-//     exampleOption.setAttribute('value', '')
-//     exampleOption.textContent = 'Example'
-//     const exampleOption2 = document.createElement('option')
-//     exampleOption2.setAttribute('value', '')
-//     exampleOption2.textContent = 'Example 2'
-
-
-
-//     const rightMenuHeaderEl = document.createElement('ul')
-//     rightMenuHeaderEl.setAttribute('class', 'header-menu')
-//     const searchLiEl = document.createElement('li')
-//     searchLiEl.setAttribute('class', 'header-menu__item')
-
-//     const searchButton = document.createElement('button')
-//     const searchIconEl = document.createElement('i')
-//     searchIconEl.classList.add('fas')
-//     searchIconEl.classList.add('fa-search')
-
-//     const userLiEl = document.createElement('li')
-//     userLiEl.setAttribute('class', 'header-menu__item')
-
-//     const userButton = document.createElement('button')
-//     const userIconEl = document.createElement('i')
-//     userIconEl.classList.add('fas')
-//     userIconEl.classList.add('fa-user')
-
-//     document.body.append(headerEl)
-//     headerEl.append(logoEl, navEl)
-//     navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
-//     leftMenuHeaderEl.append(homeLiEl, bestSellingLiEl, categoryLiEl)
-//     categoryLiEl.append(selectEl)
-//     selectEl.append(categoryOptionEl, exampleOption, exampleOption2)
-//     rightMenuHeaderEl.append(searchLiEl, userLiEl)
-//     searchLiEl.append(searchButton)
-//     searchButton.append(searchIconEl)
-//     userLiEl.append(userButton)
-//     userButton.append(userIconEl)
-// }
 function renderHeader() {
 
-        headerEl.innerHTML = '';
-        const logoEl = document.createElement('img')
-        logoEl.setAttribute('class', 'official-logo')
-        logoEl.setAttribute('src', 'images/cake-logo.png')
-        logoEl.setAttribute('alt', 'Albulena Cakes logo')
-    
-        const navEl = document.createElement('nav')
-        navEl.setAttribute('class', 'navigation-bar')
-    
-        const leftMenuHeaderEl = document.createElement('ul')
-        leftMenuHeaderEl.setAttribute('class', 'header-menu')
-        const homeLiEl = document.createElement('li')
-        homeLiEl.setAttribute('class', 'header-menu__item')
-        homeLiEl.textContent = 'Home'
-    
-        const bestSellingLiEl = document.createElement('li')
-        bestSellingLiEl.setAttribute('class', 'header-menu__item')
-        bestSellingLiEl.textContent = 'Bestselling'
-    
-        const categoryLiEl = document.createElement('li')
-        categoryLiEl.setAttribute('class', 'header-menu__item')
-    
-        const selectEl = document.createElement('select')
-        selectEl.setAttribute('name','filter-by-type')
-    
-        const categoryOptionEl = document.createElement('option')
-        categoryOptionEl.setAttribute('value', '')
-        categoryOptionEl.textContent = 'Category'
-    
-        const christmasOption = document.createElement('option')
-        christmasOption.setAttribute('value', 'christmas')
-        christmasOption.textContent = 'Christmas'
-        const birthdaysOption = document.createElement('option')
-        birthdaysOption.setAttribute('value', 'birthdays')
-        birthdaysOption.textContent = 'Birthdays'
-        const weddingsOption = document.createElement('option')
-        weddingsOption.setAttribute('value', 'weddings')
-        weddingsOption.textContent = 'Weddings'
-    
-        const rightMenuHeaderEl = document.createElement('ul')
-        rightMenuHeaderEl.setAttribute('class', 'header-menu')
-        const searchLiEl = document.createElement('li')
-        searchLiEl.setAttribute('class', 'header-menu__item')
-    
-        const searchButton = document.createElement('button')
-        const searchIconEl = document.createElement('i')
-        searchIconEl.classList.add('fas')
-        searchIconEl.classList.add('fa-search')
-    
-        const userLiEl = document.createElement('li')
-        userLiEl.setAttribute('class', 'header-menu__item')
-    
-        const userButton = document.createElement('button')
-        const userIconEl = document.createElement('i')
-        userIconEl.classList.add('fas')
-        userIconEl.classList.add('fa-user')
-    
-        document.body.append(headerEl)
-        headerEl.append(logoEl, navEl)
-        navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
-        leftMenuHeaderEl.append(homeLiEl, bestSellingLiEl, categoryLiEl)
-        categoryLiEl.append(selectEl)
-        selectEl.append(categoryOptionEl, christmasOption, birthdaysOption, weddingsOption)
-        rightMenuHeaderEl.append(searchLiEl, userLiEl)
-        searchLiEl.append(searchButton)
-        searchButton.append(searchIconEl)
-        userLiEl.append(userButton)
-        userButton.append(userIconEl)
-    
-        listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl)
-    
-        selectEl.value = state.type
-    
-        selectEl.addEventListener('change',function(){
-            state.type = selectEl.value
-            state.selectedItem = ''
-            render()
-        })
-    }
+    headerEl.innerHTML = '';
+    const logoEl = document.createElement('img')
+    logoEl.setAttribute('class', 'official-logo')
+    logoEl.setAttribute('src', 'images/cake-logo.png')
+    logoEl.setAttribute('alt', 'Albulena Cakes logo')
+
+    const navEl = document.createElement('nav')
+    navEl.setAttribute('class', 'navigation-bar')
+
+    const leftMenuHeaderEl = document.createElement('ul')
+    leftMenuHeaderEl.setAttribute('class', 'header-menu')
+    const homeLiEl = document.createElement('li')
+    homeLiEl.setAttribute('class', 'header-menu__item')
+    homeLiEl.textContent = 'Home'
+
+    const bestSellingLiEl = document.createElement('li')
+    bestSellingLiEl.setAttribute('class', 'header-menu__item')
+    bestSellingLiEl.textContent = 'Bestselling'
+
+    const categoryLiEl = document.createElement('li')
+    categoryLiEl.setAttribute('class', 'header-menu__item')
+
+    const selectEl = document.createElement('select')
+    selectEl.setAttribute('name', 'filter-by-type')
+
+    const categoryOptionEl = document.createElement('option')
+    categoryOptionEl.setAttribute('value', '')
+    categoryOptionEl.textContent = 'Category'
+
+    const christmasOption = document.createElement('option')
+    christmasOption.setAttribute('value', 'christmas')
+    christmasOption.textContent = 'Christmas'
+    const birthdaysOption = document.createElement('option')
+    birthdaysOption.setAttribute('value', 'birthdays')
+    birthdaysOption.textContent = 'Birthdays'
+    const weddingsOption = document.createElement('option')
+    weddingsOption.setAttribute('value', 'weddings')
+    weddingsOption.textContent = 'Weddings'
+
+    const rightMenuHeaderEl = document.createElement('ul')
+    rightMenuHeaderEl.setAttribute('class', 'header-menu')
+    const searchLiEl = document.createElement('li')
+    searchLiEl.setAttribute('class', 'header-menu__item')
+
+    const searchButton = document.createElement('button')
+    const searchIconEl = document.createElement('i')
+    searchIconEl.classList.add('fas')
+    searchIconEl.classList.add('fa-search')
+
+    const userLiEl = document.createElement('li')
+    userLiEl.setAttribute('class', 'header-menu__item')
+
+    const userButton = document.createElement('button')
+    const userIconEl = document.createElement('i')
+    userIconEl.classList.add('fas')
+    userIconEl.classList.add('fa-user')
+
+    document.body.append(headerEl)
+    headerEl.append(logoEl, navEl)
+    navEl.append(leftMenuHeaderEl, rightMenuHeaderEl)
+    leftMenuHeaderEl.append(homeLiEl, bestSellingLiEl, categoryLiEl)
+    categoryLiEl.append(selectEl)
+    selectEl.append(categoryOptionEl, christmasOption, birthdaysOption, weddingsOption)
+    rightMenuHeaderEl.append(searchLiEl, userLiEl)
+    searchLiEl.append(searchButton)
+    searchButton.append(searchIconEl)
+    userLiEl.append(userButton)
+    userButton.append(userIconEl)
+
+    listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl)
+
+    selectEl.value = state.type
+
+    selectEl.addEventListener('change', function () {
+        state.type = selectEl.value
+        state.selectedItem = ''
+        render()
+    })
+}
 function renderMain() {
     mainEl.innerHTML = ''
     const itemsToDisplay = getItemsToDisplay();
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
-    
 
-    if(state.type === '') pageTitle.textContent = 'Home'
-    if(state.showBestSellings) pageTitle.textContent = 'Bestsellings'
-    if(state.type === 'christmas') pageTitle.textContent = 'Christmas'
-    if(state.type === 'birthdays') pageTitle.textContent = 'Birthdays'
-    if(state.type === 'weddings') pageTitle.textContent = 'Weddings'
-    if(itemsToDisplay.length === 0) pageTitle.textContent = 'Nothing to show!'
+
+    if (state.type === '') pageTitle.textContent = 'Home'
+    if (state.showBestSellings) pageTitle.textContent = 'Bestsellings'
+    if (state.type === 'christmas') pageTitle.textContent = 'Christmas'
+    if (state.type === 'birthdays') pageTitle.textContent = 'Birthdays'
+    if (state.type === 'weddings') pageTitle.textContent = 'Weddings'
+    if (itemsToDisplay.length === 0) pageTitle.textContent = 'Nothing to show!'
 
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
@@ -387,7 +317,7 @@ function init() {
         state.cakes = cake
         render();
     });
-    render()
+
 }
 
 init();
