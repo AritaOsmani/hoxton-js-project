@@ -137,6 +137,7 @@ function renderMain() {
     cakeContainer.setAttribute('class', 'cake-cards-container');
 
     if (state.selectedItem !== '') {
+
         renderDetailsPage(state.selectedItem);
     } else {
         renderCardItems(cakeContainer);
@@ -257,7 +258,7 @@ function renderDetailsPage(cake) {
     //Append imageAndCommContainer and cakeProperties to mainContainer:
     mainContainer.append(imageAndCommContainer, cakeProperties);
 
-    mainEl.setAttribute('class', 'main-class');
+
     mainEl.append(mainContainer);
 
 }
