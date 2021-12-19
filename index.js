@@ -4,7 +4,8 @@ const footerEl = document.createElement('footer');
 
 const state = {
     cakes: [],
-    selectedItem: ''
+    selectedItem: '',
+    modal: ''
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -256,6 +257,30 @@ function render() {
     renderHeader()
     renderMain()
     renderFooter()
+}
+function renderSignInModal() {
+    // <div class="modal-wrapper">
+    //     <div class="sign-in-modal">
+    //         <button class="close-btn">X</button>
+    //         <h3 class="modal-title">Sign In</h3>
+    //         <form class="sign-in-form" action="">
+    //             <label for="">
+    //                 Email
+    //                 <input type="email">
+    //             </label>
+    //             <label for="">
+    //                 Password
+    //                 <input type="password" name="" id="">
+    //             </label>
+    //             <button class="sign-in-btn" type="submit">Sign in</button>
+    //         </form>
+    //         <div class="register-container">
+    //             <span class="no-acc">Don't have an account?</span>
+    //             <span class="register">Register now</span>
+    //         </div>
+
+    //     </div>
+    // </div>
 }
 function updateCakeItemInServer(cakeItem) {
     fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
