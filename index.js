@@ -281,6 +281,39 @@ function renderSignInModal() {
 
     //     </div>
     // </div>
+    const modalWrapper = document.createElement('div');
+    modalWrapper.setAttribute('class', 'modal-wrapper');
+
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'sign-in-modal');
+
+    const closeBtn = document.createElement('button');
+    closeBtn.setAttribute('class', 'close-btn');
+    closeBtn.textContent = 'X';
+
+    const modalTitle = document.createElement('h3');
+    modalTitle.setAttribute('class', 'modal-title');
+    modalTitle.textContent = 'Sign In';
+
+    const formEl = document.createElement('form');
+    formEl.setAttribute('class', 'sign-in-form');
+
+    const emailLabel = document.createElement('label');
+    emailLabel.textContent = 'Email';
+
+    const emailInput = document.createElement('input');
+    emailInput.setAttribute('type', 'email');
+
+    //Append emailInput to emailLabel:
+    emailLabel.append(emailInput);
+
+    const passwordLabel = document.createElement('label');
+    passwordLabel.textContent = 'Password';
+
+    const passwordInput = document.createElement('input');
+
+
+
 }
 function updateCakeItemInServer(cakeItem) {
     fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
