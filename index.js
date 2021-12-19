@@ -6,6 +6,7 @@ const state = {
     cakes: [],
     selectedItem: '',
     modal: '',
+    search: '',
     showBestSellings: false,
     type: ''
 }
@@ -17,6 +18,8 @@ function getItemsToDisplay() {
     }
     itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
 
+    if(state.search !== '') itemsToDisplay = itemsToDisplay.filter(cake => cake.title.toUpperCase().includes(state.search.toUpperCase()))
+    
     return itemsToDisplay;
 }
 function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
@@ -24,18 +27,21 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.selectedItem = ''
         state.type = ''
+        state.search = ''
         render()
     })
     homeLiEl.addEventListener('click', function () {
         state.showBestSellings = false
         state.type = ''
         state.selectedItem = ''
+        state.search = ''
         render()
     })
     bestSellingLiEl.addEventListener('click', function () {
         state.showBestSellings = true
         state.type = ''
         state.selectedItem = ''
+        state.search = ''
         render()
     })
 }
@@ -90,6 +96,10 @@ function renderHeader() {
     const searchIconEl = document.createElement('i')
     searchIconEl.classList.add('fas')
     searchIconEl.classList.add('fa-search')
+    searchButton.addEventListener('click',function(){
+        state.modal = 'search'
+        render()
+    })
 
     const userLiEl = document.createElement('li')
     userLiEl.setAttribute('class', 'header-menu__item')
@@ -132,6 +142,9 @@ function renderMain() {
     const pageTitle = document.createElement('h2');
     pageTitle.setAttribute('class', 'page-title');
 
+    const searchMessageh4 = document.createElement('h4')
+    searchMessageh4.setAttribute('class', 'search-message-title');
+
 
     if (state.type === '') pageTitle.textContent = 'Home'
     if (state.showBestSellings) pageTitle.textContent = 'Bestsellings'
@@ -139,6 +152,10 @@ function renderMain() {
     if (state.type === 'birthdays') pageTitle.textContent = 'Birthdays'
     if (state.type === 'weddings') pageTitle.textContent = 'Weddings'
     if (itemsToDisplay.length === 0) pageTitle.textContent = 'Nothing to show!'
+    if(state.search !== ''){
+        searchMessageh4.textContent = `You are searching for: ${state.search}`
+        mainEl.prepend(searchMessageh4)
+    } 
 
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
@@ -312,10 +329,53 @@ function render() {
     renderFooter()
     renderModals();
 }
+function renderSearchModal(){
+    const modal = document.createElement('div')
+    modal.setAttribute('class','search-modal')
+    
+    modal.addEventListener('click',function(event){
+        event.stopPropagation()
+    })
+
+    const closeBtn = document.createElement('button')
+
+    modalWrapperElements(modal,closeBtn)
+
+    const modalTitle = document.createElement('h3')
+    modalTitle.setAttribute('class','modal-title')
+    modalTitle.textContent = 'Search'
+
+    const searchForm = document.createElement('form')
+
+    const searchLabel = document.createElement('label');
+    searchLabel.setAttribute('for', 'search');
+    searchLabel.textContent = 'Search cakes by name: ';
+    
+    const searchInput = document.createElement('input');
+    searchInput.setAttribute('type', 'search');
+    searchInput.setAttribute('id', 'search');
+    searchInput.setAttribute('name', 'search');
+
+    searchForm.addEventListener('submit',function(event){
+
+        event.preventDefault()
+
+        state.search = searchForm.search.value
+
+        state.modal = ''
+
+        render()
+    })
+    modal.append(closeBtn,modalTitle,searchForm)
+    searchForm.append(searchLabel, searchInput)
+}
 function renderSignInModal() {
     const modal = document.createElement('div');
     modal.setAttribute('class', 'sign-in-modal');
-
+    modal.addEventListener('click',function(event){
+        event.stopPropagation()
+    })
+    
     const closeBtn = document.createElement('button');
 
 
@@ -376,6 +436,11 @@ function modalWrapperElements(modal, closeBtn) {
     closeBtn.setAttribute('class', 'close-btn');
     closeBtn.textContent = 'X';
 
+    modalWrapper.addEventListener('click',function(){
+        state.modal = ''
+        render()
+    })
+
     closeBtn.addEventListener('click', () => {
         state.modal = '';
         render();
@@ -386,6 +451,9 @@ function modalWrapperElements(modal, closeBtn) {
 function renderModals() {
     if (state.modal === 'signIn') {
         renderSignInModal();
+    }
+    if(state.modal === 'search'){
+        renderSearchModal()
     }
 }
 function updateCakeItemInServer(cakeItem) {

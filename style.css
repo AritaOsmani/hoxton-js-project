@@ -4,6 +4,7 @@
     --white: #fff;
     --light-pink:#FAC3BE;
     --footer_header_color:black;
+    --black: #000;
 }
 *{
     margin:0;
@@ -89,6 +90,10 @@ main{
     color:var(--pink);
     font-family: 'Playball', cursive;
     font-size: 30px;
+}
+.search-message-title{
+    margin-left:95px;
+    color: var(--black);
 }
 .cake-cards-container{
     display: grid;
@@ -268,7 +273,15 @@ footer{
     margin-right:5px;
     color: var(--pink);
 } */
-
+.search-modal{
+    background-color: var(--white);
+    position: relative;
+    border-radius: 10px;
+    display: grid;
+    place-content: center;
+    gap: 0.3rem;
+    padding: 2rem;
+}
 
 /*Modal styling*/
 .modal-wrapper{
