@@ -199,28 +199,16 @@ function renderOrderProduct(cake){
     cardInfoTitle.setAttribute('class','order-information__title')
     cardInfoTitle.textContent = 'Shopping Cart.'
 
-    const cardListUlEl = document.createElement('ul')
-    cardListUlEl.classList.add('card-list')
-    cardListUlEl.classList.add('card-info__title')
-
-    const productTitleLi = document.createElement('li')
-    productTitleLi.textContent = 'Product'
-    const quantityTitleLi = document.createElement('li')
-    quantityTitleLi.textContent = 'Quantity'
-    const priceTitleLi = document.createElement('li')
-    priceTitleLi.textContent = 'Total Price'
-
     const cardListProductUlEl = document.createElement('ul')
-    cardListProductUlEl.classList.add('card-list')
     cardListProductUlEl.classList.add('card-info__product')
 
     const productLi = document.createElement('li')
     productLi.classList.add('product-span')
     const productImageEl = document.createElement('img')
-    productImageEl.setAttribute('src','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg')
-    productImageEl.setAttribute('alt','')
+    productImageEl.setAttribute('src',cake.image)
+    productImageEl.setAttribute('alt',cake.title)
     const cakeSpanEl = document.createElement('span')
-    cakeSpanEl.textContent = 'Chocolate Cake'
+    cakeSpanEl.textContent = cake.title
     const buttonLi = document.createElement('li')
 
     const decreaseButton = document.createElement('button')
@@ -235,13 +223,14 @@ function renderOrderProduct(cake){
     increaseButton.textContent = '+'
 
     const priceLi = document.createElement('li')
-    priceLi.textContent = '20€'
+    priceLi.textContent = `${cake.price} €`
 
     const orderInfoTitle = document.createElement('h3')
     orderInfoTitle.setAttribute('class','order-information__title')
-    orderInfoTitle.textContent = 'Shipping Information'
+    orderInfoTitle.textContent = 'Shipping Information.'
 
     const shippingForm = document.createElement('form')
+    shippingForm.setAttribute('class','shipping-form')
 
     const labelName = document.createElement('label')
     labelName.setAttribute('for','name')
@@ -347,13 +336,12 @@ function renderOrderProduct(cake){
     const checkOutButtonEl = document.createElement('button')
     checkOutButtonEl.setAttribute('class','checkout-button')
     checkOutButtonEl.setAttribute('type','submit')
-    checkOutButtonEl.textContent = 'Check Out.'
+    checkOutButtonEl.textContent = 'Check Out'
 
     mainEl.append(orderInformationSection)
     orderInformationSection.append(orderInfo,paymentInfo)
     orderInfo.append(cardInfo,orderInfoTitle, shippingForm)
-    cardInfo.append(cardInfoTitle, cardListUlEl, cardListProductUlEl)
-    cardListUlEl.append(productTitleLi, quantityTitleLi, priceTitleLi)
+    cardInfo.append(cardInfoTitle, cardListProductUlEl)
     cardListProductUlEl.append(productLi, buttonLi, priceLi)
     productLi.append(productImageEl,cakeSpanEl)
     buttonLi.append(decreaseButton, quantitySpanEl, increaseButton)

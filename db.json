@@ -270,6 +270,13 @@
       "surname": "putans",
       "password": "ed",
       "orders": []
+    },
+    {
+      "id": "filan@email.com",
+      "name": "Filan",
+      "surname": "Fisteku",
+      "password": "filani",
+      "orders": []
     }
   ]
 }
