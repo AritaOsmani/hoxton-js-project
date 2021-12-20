@@ -263,6 +263,13 @@
       "surname": "Marcora",
       "password": "nicolas",
       "orders": []
+    },
+    {
+      "id": "ed@email.com",
+      "name": "ed",
+      "surname": "putans",
+      "password": "ed",
+      "orders": []
     }
   ]
 }

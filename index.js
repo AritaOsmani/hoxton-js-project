@@ -10,7 +10,7 @@ const state = {
     showBestSellings: false,
     type: '',
     user: null,
-    userExists: 'false',
+    userExists: false,
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -517,9 +517,34 @@ function renderRegisterModal() {
     createAccBtn.textContent = 'Create account';
 
     formEl.append(nameLabel, surnameLabel, emailLabel, passwordLabel, confirmPassLabel, createAccBtn);
-    formEl.addEventListener('submit', event => {
 
+    formEl.addEventListener('submit', event => {
         event.preventDefault();
+        const nameEntered = nameInput.value;
+        const surnameEntered = surnameInput.value;
+        const emailEntered = emailInput.value;
+        const passwordEntered = passwordInput.value;
+        const confirmPasswordEntered = confirmPassInput.value;
+
+
+        checkUser(emailEntered).then(() => {
+            if (state.userExists) {
+                alert('This user already exists');
+            } else {
+
+                if (comparePasswords(passwordEntered, confirmPasswordEntered)) {
+                    addUserToServer(nameEntered, surnameEntered, emailEntered, passwordEntered);
+                } else {
+                    alert(`Passwords don't match. Please try again!`);
+                }
+
+            }
+            render();
+        });
+        console.log(state.userExists);
+
+
+
 
 
     })
@@ -649,13 +674,19 @@ function signIn(email, userPassword) {
 }
 
 function checkUser(userName) {
-    fetch(`http://localhost:3000/users/${userName}`).then(res => res.json()).then(user => {
+    return fetch(`http://localhost:3000/users/${userName}`).then(res => res.json()).then(user => {
         if (user.id === userName) {
             state.userExists = true;
-        } else {
-            state.userExists = false;
         }
+        else {
+            state.userExists = false;
+
+        }
+        console.log('Inside')
+        // render();
+
     })
+
 }
 function comparePasswords(pass_1, pass_2) {
     if (pass_1 === pass_2) {
