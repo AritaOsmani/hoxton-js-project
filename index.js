@@ -453,6 +453,9 @@ function renderRegisterModal() {
     const modal = document.createElement('div');
     modal.setAttribute('class', 'register-modal');
 
+    modal.addEventListener('click', event => {
+        event.stopPropagation();
+    })
     const closeBtn = document.createElement('button');
     modalWrapperElements(modal, closeBtn);
 
@@ -513,6 +516,12 @@ function renderRegisterModal() {
     createAccBtn.textContent = 'Create account';
 
     formEl.append(nameLabel, surnameLabel, emailLabel, passwordLabel, confirmPassLabel, createAccBtn);
+    formEl.addEventListener('submit', event => {
+
+        event.preventDefault();
+
+
+    })
     modal.append(closeBtn, modalTitle, formEl);
 }
 function renderWelcomeModal() {
