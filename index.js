@@ -8,7 +8,8 @@ const state = {
     modal: '',
     search: '',
     showBestSellings: false,
-    type: ''
+    type: '',
+    user: null
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -110,7 +111,12 @@ function renderHeader() {
     userIconEl.classList.add('fa-user')
 
     userButton.addEventListener('click', () => {
-        state.modal = 'signIn';
+        if (state.user !== null) {
+            state.modal = 'greeting';
+        } else {
+            state.modal = 'signIn';
+        }
+
         render();
     })
 
@@ -563,6 +569,13 @@ function renderGreetingModal() {
     signOutBtn.setAttribute('class', 'sign-out-btn');
     signOutBtn.textContent = 'Sign out';
 
+    signOutBtn.addEventListener('click', event => {
+        event.stopPropagation();
+        state.user = null;
+        state.modal = ''
+        render();
+    })
+
     modal.append(closeBtn, titleEl, signOutBtn);
 }
 function modalWrapperElements(modal, closeBtn) {
@@ -598,6 +611,9 @@ function renderModals() {
     }
     if (state.modal === 'failed') {
         renderFailedAccessModal();
+    }
+    if (state.modal === 'greeting') {
+        renderGreetingModal();
     }
 }
 function updateCakeItemInServer(cakeItem) {
