@@ -556,3 +556,12 @@ label{
 .welcome-new-user-modal .sign-in-btn{
     padding:10px 30px;
 }
+.user-already-exists-modal{
+    background-color: var(--white);
+    padding:30px;
+    position: relative;
+    height:100px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+}

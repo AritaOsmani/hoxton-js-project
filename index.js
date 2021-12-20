@@ -814,6 +814,19 @@ function renderWelcomeNewUserModal() {
 
     modal.append(closeBtn, titleEl, parEl, signInButton);
 }
+function renderUserAlreadyExistsModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'user-already-exists-modal');
+
+    const closeBtn = document.createElement('button');
+
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h4');
+    titleEl.textContent = 'This account already exists. Please use another email.';
+
+    modal.append(closeBtn, titleEl);
+}
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');
