@@ -10,7 +10,7 @@ const state = {
     showBestSellings: false,
     type: '',
     user: null,
-    userExists: 'false',
+    userExists: false,
     showOrderSection: false
 }
 function getItemsToDisplay() {
@@ -706,23 +706,20 @@ function renderRegisterModal() {
 
         checkUser(emailEntered).then(() => {
             if (state.userExists) {
-                alert('This user already exists');
+                state.modal = 'exists';
+                render();
             } else {
 
                 if (comparePasswords(passwordEntered, confirmPasswordEntered)) {
                     addUserToServer(nameEntered, surnameEntered, emailEntered, passwordEntered);
+                    state.modal = 'new-user';
                 } else {
-                    alert(`Passwords don't match. Please try again!`);
+                    state.modal = 'wrong-pass';
                 }
 
             }
             render();
         });
-        console.log(state.userExists);
-
-
-
-
 
     })
     modal.append(closeBtn, modalTitle, formEl);
@@ -876,6 +873,15 @@ function renderModals() {
     }
     if (state.modal === 'greeting') {
         renderGreetingModal();
+    }
+    if (state.modal === 'new-user') {
+        renderWelcomeNewUserModal();
+    }
+    if (state.modal === 'wrong-pass') {
+        renderWrongPasswordModal();
+    }
+    if (state.modal === 'exists') {
+        renderUserAlreadyExistsModal();
     }
 }
 function updateCakeItemInServer(cakeItem) {
