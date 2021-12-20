@@ -426,3 +426,29 @@ label{
 .try-again-btn:hover{
     text-decoration: underline;
 }
+.greetings-modal{
+    background-color: var(--white);
+    display: grid;
+    gap:10px;
+    place-items: center;
+    padding:30px;
+    position: relative;
+    border-radius: 10px;
+    width:250px;
+    height:150px;
+}
+.greetings-modal h2{
+    color:#6B011F;
+}
+.sign-out-btn{
+    font-size:13px;
+    color:#6B011F;
+    border-radius: 10px;
+    border:solid 1px #6B011F;
+    padding:5px 30px;
+    
+}
+.sign-out-btn:hover{
+    color:var(--white);
+    background-color:#6B011F;
+}
