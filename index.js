@@ -522,6 +522,25 @@ function renderWelcomeModal() {
 
     modal.append(closeBtn, titleEL);
 }
+function renderFailedAccessModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'failed-to-access-modal');
+
+    const closeBtn = document.createElement('button');
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h2');
+    titleEl.textContent = 'Something went wrong!';
+
+    const parEl = document.createElement('p');
+    parEl.textContent = 'You entered the wrong email or password.';
+
+    const tryAgainBtn = document.createElement('button');
+    tryAgainBtn.setAttribute('class', 'try-again-btn');
+    tryAgainBtn.textContent = 'Try again';
+
+    modal.append(closeBtn, titleEl, parEl, tryAgainBtn);
+}
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');

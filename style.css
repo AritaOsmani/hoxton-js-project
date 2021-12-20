@@ -401,3 +401,28 @@ label{
     color:#6B011F;
     font-family: 'Roboto', sans-serif;
 }
+.failed-to-access-modal{
+    display: grid;
+    gap:20px;
+    background-color: var(--white);
+    position: relative;
+    padding:30px;
+    place-items: center;
+    border-radius: 10px;
+}
+.failed-to-access-modal h2{
+    color:var(--pink);
+}
+.failed-to-access-modal p{
+    padding:10px 40px;
+    font-size: 14px;
+    color:#4A403A;
+}
+.try-again-btn{
+    font-size: 15px;
+    color:var(--pink);
+    
+}
+.try-again-btn:hover{
+    text-decoration: underline;
+}
