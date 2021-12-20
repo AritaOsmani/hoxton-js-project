@@ -657,6 +657,13 @@ function checkUser(userName) {
         }
     })
 }
+function comparePasswords(pass_1, pass_2) {
+    if (pass_1 === pass_2) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function init() {
     getCakesFromServer().then(cake => {
