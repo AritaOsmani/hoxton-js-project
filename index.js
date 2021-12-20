@@ -9,7 +9,8 @@ const state = {
     search: '',
     showBestSellings: false,
     type: '',
-    user: null
+    user: null,
+    userExists: 'false',
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -647,6 +648,15 @@ function signIn(email, userPassword) {
     })
 }
 
+function checkUser(userName) {
+    fetch(`http://localhost:3000/users/${userName}`).then(res => res.json()).then(user => {
+        if (user.id === userName) {
+            state.userExists = true;
+        } else {
+            state.userExists = false;
+        }
+    })
+}
 
 function init() {
     getCakesFromServer().then(cake => {
