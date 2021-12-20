@@ -418,6 +418,7 @@ function renderSignInModal() {
         const userEmail = emailInput.value;
         const userPassword = passwordInput.value;
         signIn(userEmail, userPassword);
+
         render();
     })
 
@@ -539,6 +540,12 @@ function renderFailedAccessModal() {
     tryAgainBtn.setAttribute('class', 'try-again-btn');
     tryAgainBtn.textContent = 'Try again';
 
+    tryAgainBtn.addEventListener('click', function (event) {
+        event.stopPropagation()
+        state.modal = 'signIn';
+        render();
+    })
+
     modal.append(closeBtn, titleEl, parEl, tryAgainBtn);
 }
 function modalWrapperElements(modal, closeBtn) {
@@ -569,6 +576,12 @@ function renderModals() {
     if (state.modal === 'register') {
         renderRegisterModal();
     }
+    if (state.modal === 'welcome') {
+        renderWelcomeModal();
+    }
+    if (state.modal === 'failed') {
+        renderFailedAccessModal();
+    }
 }
 function updateCakeItemInServer(cakeItem) {
     fetch(`http://localhost:3000/cakes/${cakeItem.id}`, {
@@ -583,10 +596,12 @@ function signIn(email, userPassword) {
     return fetch(`http://localhost:3000/users/${email}`).then(res => res.json()).then(user => {
         if (user.password === userPassword) {
             state.user = user;
-            alert('Welcome');
+            state.modal = 'welcome';
+
         } else {
-            alert('You entered the wrong password or email');
+            state.modal = 'failed';
         }
+        render();
     })
 }
 
