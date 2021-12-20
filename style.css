@@ -565,3 +565,13 @@ label{
     place-items: center;
     border-radius: 10px;
 }
+.wrong-password-modal{
+    background-color: var(--white);
+    position: relative;
+    display: grid;
+    gap:10px;
+    place-items: center;
+    padding:30px;
+    border-radius: 10px;
+    height:100px;
+}

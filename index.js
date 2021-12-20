@@ -827,6 +827,19 @@ function renderUserAlreadyExistsModal() {
 
     modal.append(closeBtn, titleEl);
 }
+function renderWrongPasswordModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'wrong-password-modal');
+
+    const closeBtn = document.createElement('button');
+
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h4');
+    titleEl.textContent = 'Your password confirmation does not match! Try again.';
+
+    modal.append(closeBtn, titleEl);
+}
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');
