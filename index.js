@@ -548,6 +548,23 @@ function renderFailedAccessModal() {
 
     modal.append(closeBtn, titleEl, parEl, tryAgainBtn);
 }
+function renderGreetingModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'greetings-modal');
+
+    const closeBtn = document.createElement('button');
+
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h2');
+    titleEl.textContent = `Hey ${state.user.name}!`;
+
+    const signOutBtn = document.createElement('button');
+    signOutBtn.setAttribute('class', 'sign-out-btn');
+    signOutBtn.textContent = 'Sign out';
+
+    modal.append(closeBtn, titleEl, signOutBtn);
+}
 function modalWrapperElements(modal, closeBtn) {
     const modalWrapper = document.createElement('div');
     modalWrapper.setAttribute('class', 'modal-wrapper');
