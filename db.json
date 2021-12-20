@@ -256,6 +256,13 @@
           "quantity": 2
         }
       ]
+    },
+    {
+      "id": "nicolas@email.com",
+      "name": "Nicolas",
+      "surname": "Marcora",
+      "password": "nicolas",
+      "orders": []
     }
   ]
 }
