@@ -9,7 +9,8 @@ const state = {
     search: '',
     showBestSellings: false,
     type: '',
-    user: null
+    user: null,
+    userExists: 'false',
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
