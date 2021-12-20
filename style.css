@@ -273,6 +273,80 @@ footer{
     margin-right:5px;
     color: var(--pink);
 } */
+.order-information{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+    gap: 1rem;
+}
+.order-info{
+    border-radius: 1rem;
+    background-color: rgba(152, 160, 84, 0.76);
+    padding: 1rem;
+}
+.card-info{
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.card-list{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: space-beetwen;
+    list-style: none;
+    border-bottom: 1px solid black;
+}
+.card-list li{
+    padding: 0.5rem;
+}
+.card-info__product{
+    display: grid;
+    justify-content: center;
+}
+.card-info__product img{
+    width: 50px;
+    border-radius: 0.2rem;
+}
+.product-span{
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 1rem
+}
+form{
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.2rem;
+    justify-content: center;
+}
+.product-button{
+    background: none;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 0rem 0.2rem;
+}
+input, .checkout-button{
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    padding: 0.3rem;
+}
+.checkout-button{
+    background-color: cadetblue;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+.submit-button{
+    margin-top: 1rem;
+}
+.visa-logo{
+    width: 60px;
+}
+.payment-info{
+    border-radius: 1rem;
+    background-color: rgba(165, 42, 42, 0.445);
+    padding: 1rem;
+}
 .search-modal{
     background-color: var(--white);
     position: relative;

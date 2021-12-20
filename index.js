@@ -11,6 +11,7 @@ const state = {
     type: '',
     user: null,
     userExists: 'false',
+    showOrderSection: false
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -27,6 +28,7 @@ function getItemsToDisplay() {
 function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     logoEl.addEventListener('click', function () {
         state.showBestSellings = false
+        state.showOrderSection = false
         state.selectedItem = ''
         state.type = ''
         state.search = ''
@@ -34,6 +36,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     })
     homeLiEl.addEventListener('click', function () {
         state.showBestSellings = false
+        state.showOrderSection = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -41,6 +44,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     })
     bestSellingLiEl.addEventListener('click', function () {
         state.showBestSellings = true
+        state.showOrderSection = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -167,15 +171,195 @@ function renderMain() {
     const cakeContainer = document.createElement('div');
     cakeContainer.setAttribute('class', 'cake-cards-container');
 
-    if (state.selectedItem !== '') {
+
+    if(state.selectedItem !== '' && state.showOrderSection) renderOrderProduct(state.selectedItem)
+    else if (state.selectedItem !== '') {
 
         renderDetailsPage(state.selectedItem);
-    } else {
+    }
+    else {
         renderCardItems(cakeContainer);
         mainEl.append(pageTitle, cakeContainer);
     }
 
     document.body.append(mainEl);
+}
+function renderOrderProduct(cake){
+    mainEl.innerHTML = ''
+    const orderInformationSection = document.createElement('section')
+    orderInformationSection.setAttribute('class','order-information')
+
+    const orderInfo = document.createElement('div')
+    orderInfo.setAttribute('class','order-info')
+
+    const cardInfo = document.createElement('div')
+    cardInfo.setAttribute('class','card-info')
+
+    const cardInfoTitle = document.createElement('h3')
+    cardInfoTitle.setAttribute('class','order-information__title')
+    cardInfoTitle.textContent = 'Shopping Cart.'
+
+    const cardListUlEl = document.createElement('ul')
+    cardListUlEl.classList.add('card-list')
+    cardListUlEl.classList.add('card-info__title')
+
+    const productTitleLi = document.createElement('li')
+    productTitleLi.textContent = 'Product'
+    const quantityTitleLi = document.createElement('li')
+    quantityTitleLi.textContent = 'Quantity'
+    const priceTitleLi = document.createElement('li')
+    priceTitleLi.textContent = 'Total Price'
+
+    const cardListProductUlEl = document.createElement('ul')
+    cardListProductUlEl.classList.add('card-list')
+    cardListProductUlEl.classList.add('card-info__product')
+
+    const productLi = document.createElement('li')
+    productLi.classList.add('product-span')
+    const productImageEl = document.createElement('img')
+    productImageEl.setAttribute('src','https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg')
+    productImageEl.setAttribute('alt','')
+    const cakeSpanEl = document.createElement('span')
+    cakeSpanEl.textContent = 'Chocolate Cake'
+    const buttonLi = document.createElement('li')
+
+    const decreaseButton = document.createElement('button')
+    decreaseButton.setAttribute('class','product-button')
+    decreaseButton.textContent = '-'
+
+    const quantitySpanEl = document.createElement('span')
+    quantitySpanEl.textContent = ' 0 '
+
+    const increaseButton = document.createElement('button')
+    increaseButton.setAttribute('class','product-button')
+    increaseButton.textContent = '+'
+
+    const priceLi = document.createElement('li')
+    priceLi.textContent = '20€'
+
+    const orderInfoTitle = document.createElement('h3')
+    orderInfoTitle.setAttribute('class','order-information__title')
+    orderInfoTitle.textContent = 'Shipping Information'
+
+    const shippingForm = document.createElement('form')
+
+    const labelName = document.createElement('label')
+    labelName.setAttribute('for','name')
+    labelName.textContent = 'Name: '
+    const inputName = document.createElement('input')
+    inputName.setAttribute('id','name')
+    inputName.setAttribute('type','name')
+    inputName.setAttribute('required','required')
+    
+    const labelSurname = document.createElement('label')
+    labelSurname.setAttribute('for','surname')
+    labelSurname.textContent = 'Surname: '
+    const inputSurname = document.createElement('input')
+    inputSurname.setAttribute('id','surname')
+    inputSurname.setAttribute('type','surname')
+    inputSurname.setAttribute('required','required')
+
+    const labelCity = document.createElement('label')
+    labelCity.setAttribute('for','city')
+    labelCity.textContent = 'City: '
+    const inputCity = document.createElement('input')
+    inputCity.setAttribute('id','city')
+    inputCity.setAttribute('type','text')
+    inputCity.setAttribute('required','required')
+
+    const labelTel = document.createElement('label')
+    labelTel.setAttribute('for','tel')
+    labelTel.textContent = 'Tel: '
+    const inputTel = document.createElement('input')
+    inputTel.setAttribute('id','tel')
+    inputTel.setAttribute('type','tel')
+    inputTel.setAttribute('required','required')
+
+    const labelAddress = document.createElement('label')
+    labelAddress.setAttribute('for','street')
+    labelAddress.textContent = 'Street Address: '
+    const inputAddress = document.createElement('input')
+    inputAddress.setAttribute('id','street')
+    inputAddress.setAttribute('type','street')
+    inputAddress.setAttribute('required','required')
+
+    const labelDateAndTime = document.createElement('label')
+    labelDateAndTime.setAttribute('for','dateAndTime')
+    labelDateAndTime.textContent = 'Choose when your cake to arrive: '
+    const inputDateAndTime = document.createElement('input')
+    inputDateAndTime.setAttribute('id','dateAndTime')
+    inputDateAndTime.setAttribute('type','datetime-local')
+    inputDateAndTime.setAttribute('required','required')
+
+    const submitInput = document.createElement('input')
+    submitInput.setAttribute('class','submit-button')
+    submitInput.setAttribute('type','submit')
+
+    const paymentInfo = document.createElement('div')
+    paymentInfo.setAttribute('class','payment-info')
+
+    const paymentTitle = document.createElement('h3')
+    paymentTitle.textContent = 'Payment Info.'
+
+    const paymentForm = document.createElement('form')
+
+    const visaImageEl = document.createElement('img')
+    visaImageEl.setAttribute('src','http://assets.stickpng.com/thumbs/58482363cef1014c0b5e49c1.png')
+    visaImageEl.setAttribute('alt','')
+    visaImageEl.setAttribute('class','visa-logo')
+
+    const labelNameOnCard = document.createElement('label')
+    labelNameOnCard.setAttribute('for','nameOnCard')
+    labelNameOnCard.textContent = 'Name on Card: '
+    const inputNameOnCard = document.createElement('input')
+    inputNameOnCard.setAttribute('id','nameOnCard')
+    inputNameOnCard.setAttribute('type','name')
+    inputNameOnCard.setAttribute('required','required')
+
+    const labelCreditCardNumber = document.createElement('label')
+    labelCreditCardNumber.setAttribute('for','ccn')
+    labelCreditCardNumber.textContent = 'Credit Card Number: '
+    const inputCreditCardNumber = document.createElement('input')
+    inputCreditCardNumber.setAttribute('id','ccn')
+    inputCreditCardNumber.setAttribute('type','tel')
+    inputCreditCardNumber.setAttribute('placeholder','xxxx xxxx xxxx xxxx')
+    inputCreditCardNumber.setAttribute('maxlength','19')
+    inputCreditCardNumber.setAttribute('inputmode','numeric')
+    inputCreditCardNumber.setAttribute('required','required')
+
+    const labelExpirationDate = document.createElement('label')
+    labelExpirationDate.setAttribute('for','expirationDate')
+    labelExpirationDate.textContent = 'Expiration Date: '
+    const inputExpirationDate = document.createElement('input')
+    inputExpirationDate.setAttribute('id','expirationDate')
+    inputExpirationDate.setAttribute('type','date')
+    inputExpirationDate.setAttribute('required','required')
+
+    const labelCvv = document.createElement('label')
+    labelCvv.setAttribute('for','cvv')
+    labelCvv.textContent = 'CVV: '
+    const inputCvv = document.createElement('input')
+    inputCvv.setAttribute('id','cvv')
+    inputCvv.setAttribute('type','text')
+    inputCvv.setAttribute('maxlength','3')
+    inputCvv.setAttribute('required','required')
+
+    const checkOutButtonEl = document.createElement('button')
+    checkOutButtonEl.setAttribute('class','checkout-button')
+    checkOutButtonEl.setAttribute('type','submit')
+    checkOutButtonEl.textContent = 'Check Out.'
+
+    mainEl.append(orderInformationSection)
+    orderInformationSection.append(orderInfo,paymentInfo)
+    orderInfo.append(cardInfo,orderInfoTitle, shippingForm)
+    cardInfo.append(cardInfoTitle, cardListUlEl, cardListProductUlEl)
+    cardListUlEl.append(productTitleLi, quantityTitleLi, priceTitleLi)
+    cardListProductUlEl.append(productLi, buttonLi, priceLi)
+    productLi.append(productImageEl,cakeSpanEl)
+    buttonLi.append(decreaseButton, quantitySpanEl, increaseButton)
+    shippingForm.append(labelName, inputName, labelSurname, inputSurname, labelCity, inputCity, labelTel, inputTel, labelAddress, inputAddress, labelDateAndTime, inputDateAndTime, submitInput)
+    paymentInfo.append(paymentTitle, paymentForm)
+    paymentForm.append(visaImageEl, labelNameOnCard, inputNameOnCard, labelCreditCardNumber, inputCreditCardNumber, labelExpirationDate, inputExpirationDate, labelCvv, inputCvv, checkOutButtonEl)
 }
 function createCakeCard(cake) {
     const cakeCard = document.createElement('div');
@@ -282,7 +466,11 @@ function renderDetailsPage(cake) {
     const buttonEl = document.createElement('button');
     buttonEl.setAttribute('class', 'order_btn');
     buttonEl.textContent = 'Order now';
+    buttonEl.addEventListener('click',function(){
+        state.showOrderSection = true;
 
+        render()
+    })
     //Append cakeTitle,  priceTypeLikeContainer, cakeDescription and buttonEl to cakeProperties:
     cakeProperties.append(cakeTitle, priceTypeLikeContainer, cakeDescription, buttonEl);
 
@@ -457,6 +645,7 @@ function renderRegisterModal() {
     modal.addEventListener('click', event => {
         event.stopPropagation();
     })
+    
     const closeBtn = document.createElement('button');
     modalWrapperElements(modal, closeBtn);
 
