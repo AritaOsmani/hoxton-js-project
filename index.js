@@ -11,7 +11,8 @@ const state = {
     type: '',
     user: null,
     userExists: false,
-    showOrderSection: false
+    showOrderSection: false,
+    comments: []
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -951,6 +952,16 @@ function init() {
         render();
     });
 
+}
+
+function getCommentsFromServer() {
+    return fetch('http://localhost:3000/comments').then(res => res.json()).then(comment => state.comments = comment)
+}
+function findCakeComments(cake) {
+    let comments = state.comments.filter(comment => {
+        return comment.cakeId === cake.id;
+    })
+    return comments;
 }
 
 init();

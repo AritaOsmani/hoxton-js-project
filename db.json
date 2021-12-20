@@ -203,17 +203,20 @@
     {
       "id": 1,
       "body": "First cake comment",
-      "cakeId": 1
+      "cakeId": 1,
+      "userId": "arita@email.com"
     },
     {
       "id": 2,
       "body": "Second cake comment",
-      "cakeId": 2
+      "cakeId": 2,
+      "userId": "arita@email.com"
     },
     {
       "id": 3,
       "body": "Third cake comment",
-      "cakeId": 3
+      "cakeId": 3,
+      "userId": "besim@email.com"
     }
   ],
   "users": [
