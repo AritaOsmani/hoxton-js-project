@@ -575,6 +575,7 @@ function renderSignInModal() {
 
     const emailInput = document.createElement('input');
     emailInput.setAttribute('type', 'email');
+    emailInput.setAttribute('required', true);
 
     //Append emailInput to emailLabel:
     emailLabel.append(emailInput);
@@ -584,6 +585,7 @@ function renderSignInModal() {
 
     const passwordInput = document.createElement('input');
     passwordInput.setAttribute('type', 'password');
+    passwordInput.setAttribute('required', true);
 
     //Append passwordInput to passwordLabel:
     passwordLabel.append(passwordInput);
@@ -648,6 +650,7 @@ function renderRegisterModal() {
 
     const nameInput = document.createElement('input');
     nameInput.setAttribute('type', 'text');
+    nameInput.setAttribute('required', true);
 
     //Append nameInput to nameLabel:
     nameLabel.append(nameInput);
@@ -657,6 +660,7 @@ function renderRegisterModal() {
 
     const surnameInput = document.createElement('input');
     surnameInput.setAttribute('type', 'text');
+    surnameInput.setAttribute('required', true);
 
     //Append surnameInput to surnameLabel:
     surnameLabel.append(surnameInput);
@@ -666,6 +670,7 @@ function renderRegisterModal() {
 
     const emailInput = document.createElement('input');
     emailInput.setAttribute('type', 'email');
+    emailInput.setAttribute('required', true);
 
     //Append emailInput to emailLabel:
     emailLabel.append(emailInput);
@@ -675,6 +680,7 @@ function renderRegisterModal() {
 
     const passwordInput = document.createElement('input');
     passwordInput.setAttribute('type', 'password');
+    passwordInput.setAttribute('required', true);
 
     //Append passwordInput to passwordLabel:
     passwordLabel.append(passwordInput);
@@ -684,6 +690,7 @@ function renderRegisterModal() {
 
     const confirmPassInput = document.createElement('input');
     confirmPassInput.setAttribute('type', 'password');
+    confirmPassInput.setAttribute('required', true);
 
     //Append confirmPassInput to confirmPassLabel:
     confirmPassLabel.append(confirmPassInput);
