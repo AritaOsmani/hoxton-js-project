@@ -648,6 +648,31 @@ function signIn(email, userPassword) {
     })
 }
 
+function checkUser(userName) {
+    fetch(`http://localhost:3000/users/${userName}`).then(res => res.json()).then(user => {
+        if (user.id === userName) {
+            state.userExists = true;
+        } else {
+            state.userExists = false;
+        }
+    })
+}
+function comparePasswords(pass_1, pass_2) {
+    if (pass_1 === pass_2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function addUserToServer(name, surname, email, password) {
+    fetch(`http://localhost:3000/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "id": email, "name": name, "surname": surname, "password": password, "orders": [] })
+    })
+}
 
 function init() {
     getCakesFromServer().then(cake => {
