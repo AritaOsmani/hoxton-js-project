@@ -6,7 +6,7 @@
       "image": "images/cake_1.jpg",
       "price": 30,
       "type": "christmas",
-      "orderNumber": 13,
+      "orderNumber": 14,
       "likes": 36,
       "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
@@ -29,7 +29,7 @@
       "price": 25,
       "type": "birthdays",
       "orderNumber": 6,
-      "likes": 51,
+      "likes": 52,
       "dislikes": 2,
       "description": "This delicious afternoon tea cake with floral vintage tiered cake-stand and tea set intricately hand-crafted by our expert Cake Decorators will make your occasion truly memorable"
     },
@@ -203,17 +203,68 @@
     {
       "id": 1,
       "body": "First cake comment",
-      "cakeId": 1
+      "cakeId": 1,
+      "userId": "arita@email.com"
     },
     {
       "id": 2,
       "body": "Second cake comment",
-      "cakeId": 2
+      "cakeId": 2,
+      "userId": "arita@email.com"
     },
     {
       "id": 3,
       "body": "Third cake comment",
-      "cakeId": 3
+      "cakeId": 3,
+      "userId": "besim@email.com"
+    },
+    {
+      "id": 4,
+      "body": "Another comment",
+      "cakeId": 1,
+      "userId": "besim@email.com"
+    },
+    {
+      "cakeId": 1,
+      "body": "New Comment here",
+      "userId": "arita@email.com",
+      "id": 5
+    },
+    {
+      "cakeId": 4,
+      "body": "What a beautiful cake!",
+      "userId": "arita@email.com",
+      "id": 6
+    },
+    {
+      "cakeId": 4,
+      "body": "New Comment ",
+      "userId": "ed@email.com",
+      "id": 7
+    },
+    {
+      "cakeId": 6,
+      "body": "First comment for this cake",
+      "userId": "arita@email.com",
+      "id": 8
+    },
+    {
+      "cakeId": 8,
+      "body": "Beautiful!",
+      "userId": "besim@email.com",
+      "id": 9
+    },
+    {
+      "cakeId": 1,
+      "body": "Comment",
+      "userId": "ed@email.com",
+      "id": 10
+    },
+    {
+      "cakeId": 1,
+      "body": "C",
+      "userId": "arita@email.com",
+      "id": 11
     }
   ],
   "users": [
@@ -226,18 +277,10 @@
         {
           "id": 1,
           "quantity": 1,
-          "city": "Prishtine",
-          "tel": "044255255",
-          "streetAddress": "Bekim Bugari",
-          "cakeToArrive": 1
-        },
-        {
-          "id": 2,
-          "quantity": 1
-        },
-        {
-          "id": 3,
-          "quantity": 1
+          "city": "Pristina",
+          "tel": "3652615263",
+          "address": "dsadsdfgfdg",
+          "cakeToArrive": "2021-12-22T18:20"
         }
       ]
     },

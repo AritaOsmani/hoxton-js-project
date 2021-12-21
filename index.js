@@ -14,7 +14,8 @@ const state = {
     showOrderSection: false,
     orderQuantity: 1,
     paymentRecived: false,
-    submitedShippingInfo: null
+    submitedShippingInfo: null,
+    comments: []
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -33,7 +34,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = null
+            state.submitedShippingInfo = null
         state.selectedItem = ''
         state.type = ''
         state.search = ''
@@ -43,7 +44,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = null
+            state.submitedShippingInfo = null
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -53,7 +54,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = true
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = null
+            state.submitedShippingInfo = null
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -228,9 +229,9 @@ function renderOrderProduct(cake) {
     const decreaseButton = document.createElement('button')
     decreaseButton.setAttribute('class', 'product-button')
     decreaseButton.textContent = '-'
-    decreaseButton.addEventListener('click',function(){
+    decreaseButton.addEventListener('click', function () {
         state.orderQuantity--
-        if(state.orderQuantity < 1){
+        if (state.orderQuantity < 1) {
             state.showOrderSection = false
             state.orderQuantity = 1
         }
@@ -242,9 +243,9 @@ function renderOrderProduct(cake) {
     const increaseButton = document.createElement('button')
     increaseButton.setAttribute('class', 'product-button')
     increaseButton.textContent = '+'
-    
-    increaseButton.addEventListener('click',function(){
-        state.orderQuantity++ 
+
+    increaseButton.addEventListener('click', function () {
+        state.orderQuantity++
 
         render()
     })
@@ -275,10 +276,10 @@ function renderOrderProduct(cake) {
     inputSurname.setAttribute('type', 'surname')
     inputSurname.setAttribute('required', 'required')
 
-    if(state.user !== null){
-        inputName.setAttribute('value',`${state.user.name}`)
-        inputSurname.setAttribute('value',`${state.user.surname}`)
-    } 
+    if (state.user !== null) {
+        inputName.setAttribute('value', `${state.user.name}`)
+        inputSurname.setAttribute('value', `${state.user.surname}`)
+    }
     const labelCity = document.createElement('label')
     labelCity.setAttribute('for', 'city')
     labelCity.textContent = 'City: '
@@ -369,7 +370,7 @@ function renderOrderProduct(cake) {
     checkOutButtonEl.setAttribute('type', 'submit')
     checkOutButtonEl.textContent = 'Check Out'
 
-   
+
     mainEl.append(orderInformationSection, message)
     orderInformationSection.append(orderInfo, paymentInfo)
     orderInfo.append(cardInfo, orderInfoTitle, shippingForm)
@@ -380,10 +381,10 @@ function renderOrderProduct(cake) {
     shippingForm.append(labelName, inputName, labelSurname, inputSurname, labelCity, inputCity, labelTel, inputTel, labelAddress, inputAddress, labelDateAndTime, inputDateAndTime, submitInput)
     paymentInfo.append(paymentTitle, paymentForm)
     paymentForm.append(visaImageEl, labelNameOnCard, inputNameOnCard, labelCreditCardNumber, inputCreditCardNumber, labelExpirationDate, inputExpirationDate, labelCvv, inputCvv, checkOutButtonEl)
-    
+
     let user = state.user
 
-    shippingForm.addEventListener('submit',function(event){
+    shippingForm.addEventListener('submit', function (event) {
         event.preventDefault()
         const id = cake.id
         const quantity = state.orderQuantity
@@ -392,40 +393,40 @@ function renderOrderProduct(cake) {
         const address = inputAddress.value
         const cakeToArrive = inputDateAndTime.value
 
-        state.submitedShippingInfo = [{id, quantity, city, tel,address, cakeToArrive }]
+        state.submitedShippingInfo = [{ id, quantity, city, tel, address, cakeToArrive }]
 
         user.orders = state.submitedShippingInfo
-        
+
         render()
-        
+
     })
-    paymentForm.addEventListener('submit',function(event){
+    paymentForm.addEventListener('submit', function (event) {
         event.preventDefault()
-        if(state.submitedShippingInfo !== null){
+        if (state.submitedShippingInfo !== null) {
             state.paymentRecived = true
             render()
         }
-        else{
+        else {
             alert('please give us shipping information!')
             render()
         }
     })
 
-    if(state.submitedShippingInfo !== null) {
+    if (state.submitedShippingInfo !== null) {
         orderInfo.style.display = 'none'
     }
-    if(state.paymentRecived) {
-        paymentInfo.style.display = 'none' 
+    if (state.paymentRecived) {
+        paymentInfo.style.display = 'none'
         message.style.display = 'block'
     }
 
-    if(state.submitedShippingInfo && state.paymentRecived){
+    if (state.submitedShippingInfo && state.paymentRecived) {
         updateCakeOrdersInServer(user)
         cake.orderNumber = cake.orderNumber + state.orderQuantity
         updateCakeItemInServer(cake)
     }
 }
-function getTotalToPay(cake){
+function getTotalToPay(cake) {
     return cake.price * state.orderQuantity
 }
 function updateCakeOrdersInServer(user) {
@@ -492,8 +493,77 @@ function renderDetailsPage(cake) {
     const cakeImg = document.createElement('img');
     cakeImg.setAttribute('src', cake.image);
 
+    //Comments section
+    const commentSection = document.createElement('div');
+    commentSection.setAttribute('class', 'comment-section');
+    const commentWrapper = document.createElement('div');
+    commentWrapper.setAttribute('class', 'comments-wrapper');
+
+    const comments = findCakeComments(cake);
+
+    for (const comment of comments) {
+        const commentContainer = document.createElement('div');
+        commentContainer.setAttribute('class', 'comment');
+
+        const authorName = document.createElement('div');
+        authorName.setAttribute('class', 'author-name');
+
+
+        const nameAndCommentContainer = document.createElement('div');
+        nameAndCommentContainer.setAttribute('class', 'name-and-comment-container');
+
+        const nameAndSurname = document.createElement('span');
+        nameAndSurname.setAttribute('class', 'name-surname');
+
+
+        const authorComment = document.createElement('div');
+        authorComment.setAttribute('class', 'author-comment');
+        authorComment.textContent = comment.body;
+
+        findAuthorInServer(comment.userId).then(a => {
+            authorName.textContent = a.name[0].toUpperCase();
+            nameAndSurname.textContent = `${a.name} ${a.surname}`;
+        });
+        nameAndCommentContainer.append(nameAndSurname, authorComment);
+        commentContainer.append(authorName, nameAndCommentContainer);
+
+        commentWrapper.append(commentContainer);
+
+    }
+
+    commentSection.append(commentWrapper);
+
+    if (state.user !== null) {
+        const newCommentForm = document.createElement('form');
+        newCommentForm.setAttribute('class', 'new-comment-section-form');
+
+        const aNameForm = document.createElement('div');
+        aNameForm.setAttribute('class', 'author-name-form');
+        aNameForm.textContent = state.user.name[0].toUpperCase();
+
+        const addCommentInput = document.createElement('input');
+        addCommentInput.setAttribute('type', 'text');
+        addCommentInput.setAttribute('placeholder', 'Add a comment....');
+        addCommentInput.setAttribute('required', true);
+
+        newCommentForm.append(aNameForm, addCommentInput);
+        newCommentForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const commentInput = addCommentInput.value;
+            addCommentToServer(cake.id, commentInput, state.user.id).then(comm => {
+                state.comments.push(comm);
+                render();
+            })
+            render();
+        })
+        commentSection.append(commentWrapper, newCommentForm);
+    }
+
+
+    //Comment section
+
     //Add cakeImg to imageAndCommContainer:
-    imageAndCommContainer.append(cakeImg);
+    imageAndCommContainer.append(cakeImg, commentSection);
 
     const cakeProperties = document.createElement('div');
     cakeProperties.setAttribute('class', 'cake-prop-container');
@@ -545,11 +615,11 @@ function renderDetailsPage(cake) {
     buttonEl.textContent = 'Order now';
     buttonEl.addEventListener('click', function () {
 
-        if(state.user !== null){
+        if (state.user !== null) {
             state.showOrderSection = true;
             render()
         }
-        else{
+        else {
             renderSignInToOrderModal()
         }
     })
@@ -996,10 +1066,10 @@ function renderModals() {
     if (state.modal === 'failed') {
         renderFailedAccessModal();
     }
-    if(state.modal === 'notSignedIn'){
+    if (state.modal === 'notSignedIn') {
         renderSignInToOrderModal()
     }
-    if(state.modal === 'procedToPayment'){
+    if (state.modal === 'procedToPayment') {
         renderMakeAPayment()
     }
     if (state.modal === 'greeting') {
@@ -1074,7 +1144,31 @@ function init() {
         state.cakes = cake
         render();
     });
-
+    getCommentsFromServer().then(comment => {
+        state.comments = comment
+        render();
+    })
+}
+function getCommentsFromServer() {
+    return fetch('http://localhost:3000/comments').then(res => res.json())
+}
+function findCakeComments(cake) {
+    let comments = state.comments.filter(comment => {
+        return comment.cakeId === cake.id;
+    })
+    return comments;
+}
+function findAuthorInServer(id) {
+    return fetch(`http://localhost:3000/users/${id}`).then(res => res.json())
+}
+function addCommentToServer(cakeId, comment, author) {
+    return fetch('http://localhost:3000/comments', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "cakeId": cakeId, "body": comment, "userId": author })
+    }).then(res => res.json())
 }
 
 init();
