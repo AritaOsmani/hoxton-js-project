@@ -223,6 +223,36 @@
       "body": "Another comment",
       "cakeId": 1,
       "userId": "besim@email.com"
+    },
+    {
+      "cakeId": 1,
+      "body": "New Comment here",
+      "userId": "arita@email.com",
+      "id": 5
+    },
+    {
+      "cakeId": 4,
+      "body": "What a beautiful cake!",
+      "userId": "arita@email.com",
+      "id": 6
+    },
+    {
+      "cakeId": 4,
+      "body": "New Comment ",
+      "userId": "ed@email.com",
+      "id": 7
+    },
+    {
+      "cakeId": 6,
+      "body": "First comment for this cake",
+      "userId": "arita@email.com",
+      "id": 8
+    },
+    {
+      "cakeId": 8,
+      "body": "Beautiful!",
+      "userId": "besim@email.com",
+      "id": 9
     }
   ],
   "users": [

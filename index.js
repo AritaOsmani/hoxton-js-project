@@ -475,6 +475,15 @@ function renderDetailsPage(cake) {
         addCommentInput.setAttribute('required', true);
 
         newCommentForm.append(aNameForm, addCommentInput);
+        newCommentForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const commentInput = addCommentInput.value;
+            addCommentToServer(cake.id, commentInput, state.user.id).then(comm => {
+                state.comments.push(comm);
+                render();
+            })
+            render();
+        })
         commentSection.append(commentWrapper, newCommentForm);
     }
 
@@ -1046,5 +1055,13 @@ function findCakeComments(cake) {
 function findAuthorInServer(id) {
     return fetch(`http://localhost:3000/users/${id}`).then(res => res.json())
 }
-
+function addCommentToServer(cakeId, comment, author) {
+    return fetch('http://localhost:3000/comments', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "cakeId": cakeId, "body": comment, "userId": author })
+    }).then(res => res.json())
+}
 init();
