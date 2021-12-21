@@ -17,7 +17,7 @@
       "image": "images/cake_2.jpg",
       "price": 20,
       "type": "christmas",
-      "orderNumber": 27,
+      "orderNumber": 29,
       "likes": 17,
       "dislikes": 2,
       "description": "An edible festive gnome sits on this extra deep Christmas cake decorated as a tree trunk with ivy, snowflake and toadstool details. Available in vanilla or chocolate sponge. "
@@ -291,16 +291,12 @@
       "password": "besim",
       "orders": [
         {
-          "id": 1,
-          "quantity": 2
-        },
-        {
           "id": 2,
-          "quantity": 2
-        },
-        {
-          "id": 3,
-          "quantity": 2
+          "quantity": 1,
+          "city": "Pristina",
+          "tel": "3652615263",
+          "address": "dsadsdfgfdg",
+          "cakeToArrive": "2022-01-01T20:51"
         }
       ]
     },
@@ -309,7 +305,16 @@
       "name": "Nicolas",
       "surname": "Marcora",
       "password": "nicolas",
-      "orders": []
+      "orders": [
+        {
+          "id": 2,
+          "quantity": 1,
+          "city": "London",
+          "tel": "3652615263",
+          "address": "dsadsdfgfdg",
+          "cakeToArrive": "2021-12-31T20:53"
+        }
+      ]
     },
     {
       "id": "ed@email.com",
