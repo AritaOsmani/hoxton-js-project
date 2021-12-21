@@ -404,8 +404,73 @@ function renderDetailsPage(cake) {
     const cakeImg = document.createElement('img');
     cakeImg.setAttribute('src', cake.image);
 
+    //Coments:
+
+    //     <div class="comment-section">
+    //     <div class="comments-wrapper">
+    //         <div class="comment">
+    //             <div class="author-name">A</div>
+
+    //             <div class="author-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, fuga!
+    //             </div>
+    //         </div>
+    //     </div>
+    //     <form class="new-comment-section-form">
+    //         <div class="author-name-form">A</div>
+    //         <input type="text" placeholder="Add a comment....">
+    //     </form>
+    // </div>
+
+    const commentSection = document.createElement('div');
+    commentSection.setAttribute('class', 'comment-section');
+
+    const commentWrapper = document.createElement('div');
+    commentWrapper.setAttribute('class', 'comments-wrapper');
+
+    const commentContainer = document.createElement('div');
+    commentContainer.setAttribute('class', 'comment');
+
+    const authorName = document.createElement('div');
+    authorName.setAttribute('class', 'author-name');
+    authorName.textContent = 'A';
+
+    const nameAndCommentContainer = document.createElement('div');
+    nameAndCommentContainer.setAttribute('class', 'name-and-comment-container');
+
+    const nameAndSurname = document.createElement('span');
+    nameAndSurname.setAttribute('class', 'name-surname');
+    nameAndSurname.textContent = 'Arita Osmani';
+
+    const authorComment = document.createElement('div');
+    authorComment.setAttribute('class', 'author-comment');
+    authorComment.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, fuga!';
+
+    nameAndCommentContainer.append(nameAndSurname, authorComment);
+    commentContainer.append(authorName, nameAndCommentContainer);
+
+    commentWrapper.append(commentContainer);
+
+    const newCommentForm = document.createElement('form');
+    newCommentForm.setAttribute('class', 'new-comment-section-form');
+
+    const aNameForm = document.createElement('div');
+    aNameForm.setAttribute('class', 'author-name-form');
+    aNameForm.textContent = 'A';
+
+    const addCommentInput = document.createElement('input');
+    addCommentInput.setAttribute('type', 'text');
+    addCommentInput.setAttribute('placeholder', 'Add a comment....');
+    addCommentInput.setAttribute('required', true);
+
+    newCommentForm.append(aNameForm, addCommentInput);
+
+    commentSection.append(commentWrapper, newCommentForm);
+
+
+
+
     //Add cakeImg to imageAndCommContainer:
-    imageAndCommContainer.append(cakeImg);
+    imageAndCommContainer.append(cakeImg, commentSection);
 
     const cakeProperties = document.createElement('div');
     cakeProperties.setAttribute('class', 'cake-prop-container');
