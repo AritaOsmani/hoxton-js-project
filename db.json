@@ -253,6 +253,12 @@
       "body": "Beautiful!",
       "userId": "besim@email.com",
       "id": 9
+    },
+    {
+      "cakeId": 1,
+      "body": "Comment",
+      "userId": "ed@email.com",
+      "id": 10
     }
   ],
   "users": [
