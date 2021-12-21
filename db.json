@@ -217,6 +217,12 @@
       "body": "Third cake comment",
       "cakeId": 3,
       "userId": "besim@email.com"
+    },
+    {
+      "id": 4,
+      "body": "Another comment",
+      "cakeId": 1,
+      "userId": "besim@email.com"
     }
   ],
   "users": [

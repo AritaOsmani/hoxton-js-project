@@ -423,52 +423,63 @@ function renderDetailsPage(cake) {
 
     const commentSection = document.createElement('div');
     commentSection.setAttribute('class', 'comment-section');
-
     const commentWrapper = document.createElement('div');
     commentWrapper.setAttribute('class', 'comments-wrapper');
 
-    const commentContainer = document.createElement('div');
-    commentContainer.setAttribute('class', 'comment');
-
-    const authorName = document.createElement('div');
-    authorName.setAttribute('class', 'author-name');
-    authorName.textContent = 'A';
-
-    const nameAndCommentContainer = document.createElement('div');
-    nameAndCommentContainer.setAttribute('class', 'name-and-comment-container');
-
-    const nameAndSurname = document.createElement('span');
-    nameAndSurname.setAttribute('class', 'name-surname');
-    nameAndSurname.textContent = 'Arita Osmani';
-
-    const authorComment = document.createElement('div');
-    authorComment.setAttribute('class', 'author-comment');
-    authorComment.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, fuga!';
-
-    nameAndCommentContainer.append(nameAndSurname, authorComment);
-    commentContainer.append(authorName, nameAndCommentContainer);
-
-    commentWrapper.append(commentContainer);
-
-    const newCommentForm = document.createElement('form');
-    newCommentForm.setAttribute('class', 'new-comment-section-form');
-
-    const aNameForm = document.createElement('div');
-    aNameForm.setAttribute('class', 'author-name-form');
-    aNameForm.textContent = 'A';
-
-    const addCommentInput = document.createElement('input');
-    addCommentInput.setAttribute('type', 'text');
-    addCommentInput.setAttribute('placeholder', 'Add a comment....');
-    addCommentInput.setAttribute('required', true);
-
-    newCommentForm.append(aNameForm, addCommentInput);
-
-    commentSection.append(commentWrapper, newCommentForm);
 
 
+    const comments = findCakeComments(cake);
+    for (const comment of comments) {
+        const commentContainer = document.createElement('div');
+        commentContainer.setAttribute('class', 'comment');
+
+        const authorName = document.createElement('div');
+        authorName.setAttribute('class', 'author-name');
 
 
+        const nameAndCommentContainer = document.createElement('div');
+        nameAndCommentContainer.setAttribute('class', 'name-and-comment-container');
+
+        const nameAndSurname = document.createElement('span');
+        nameAndSurname.setAttribute('class', 'name-surname');
+
+
+        const authorComment = document.createElement('div');
+        authorComment.setAttribute('class', 'author-comment');
+        authorComment.textContent = comment.body;
+
+        findAuthorInServer(comment.userId).then(a => {
+            authorName.textContent = a.name[0].toUpperCase();
+            nameAndSurname.textContent = `${a.name} ${a.surname}`;
+        });
+        nameAndCommentContainer.append(nameAndSurname, authorComment);
+        commentContainer.append(authorName, nameAndCommentContainer);
+
+        commentWrapper.append(commentContainer);
+
+    }
+
+    commentSection.append(commentWrapper);
+
+    if (state.user !== null) {
+        const newCommentForm = document.createElement('form');
+        newCommentForm.setAttribute('class', 'new-comment-section-form');
+
+        const aNameForm = document.createElement('div');
+        aNameForm.setAttribute('class', 'author-name-form');
+        aNameForm.textContent = state.user.name[0].toUpperCase();
+
+        const addCommentInput = document.createElement('input');
+        addCommentInput.setAttribute('type', 'text');
+        addCommentInput.setAttribute('placeholder', 'Add a comment....');
+        addCommentInput.setAttribute('required', true);
+
+        newCommentForm.append(aNameForm, addCommentInput);
+        commentSection.append(commentWrapper, newCommentForm);
+    }
+
+
+    //Comment section ends here
     //Add cakeImg to imageAndCommContainer:
     imageAndCommContainer.append(cakeImg, commentSection);
 
@@ -1016,17 +1027,24 @@ function init() {
         state.cakes = cake
         render();
     });
+    getCommentsFromServer().then(comment => {
+        state.comments = comment
+        render();
+    })
 
 }
 
 function getCommentsFromServer() {
-    return fetch('http://localhost:3000/comments').then(res => res.json()).then(comment => state.comments = comment)
+    return fetch('http://localhost:3000/comments').then(res => res.json())
 }
 function findCakeComments(cake) {
     let comments = state.comments.filter(comment => {
         return comment.cakeId === cake.id;
     })
     return comments;
+}
+function findAuthorInServer(id) {
+    return fetch(`http://localhost:3000/users/${id}`).then(res => res.json())
 }
 
 init();
