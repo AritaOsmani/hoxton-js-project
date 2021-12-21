@@ -533,6 +533,12 @@ function renderDetailsPage(cake) {
 
     commentSection.append(commentWrapper);
 
+    //Likes
+    const heartIcon = document.createElement('i');
+    heartIcon.setAttribute('class', 'fas fa-heart');
+
+
+
     if (state.user !== null) {
         const newCommentForm = document.createElement('form');
         newCommentForm.setAttribute('class', 'new-comment-section-form');
@@ -557,6 +563,14 @@ function renderDetailsPage(cake) {
             render();
         })
         commentSection.append(commentWrapper, newCommentForm);
+
+        //Add likes if a user is loged in
+        heartIcon.addEventListener('click', () => {
+            cake.likes++;
+            updateCakeItemInServer(cake);
+            render();
+
+        })
     }
 
 
@@ -586,15 +600,15 @@ function renderDetailsPage(cake) {
     const likesContainer = document.createElement('div');
     likesContainer.setAttribute('class', 'like-section');
 
-    const heartIcon = document.createElement('i');
-    heartIcon.setAttribute('class', 'fas fa-heart');
+    // const heartIcon = document.createElement('i');
+    // heartIcon.setAttribute('class', 'fas fa-heart');
 
-    heartIcon.addEventListener('click', () => {
-        cake.likes++;
-        updateCakeItemInServer(cake);
-        render();
+    // heartIcon.addEventListener('click', () => {
+    //     cake.likes++;
+    //     updateCakeItemInServer(cake);
+    //     render();
 
-    })
+    // })
 
     const likes = document.createElement('span');
     likes.setAttribute('class', 'cake_likes');
