@@ -11,7 +11,10 @@ const state = {
     type: '',
     user: null,
     userExists: false,
-    showOrderSection: false
+    showOrderSection: false,
+    orderQuantity: 1,
+    paymentRecived: false,
+    submitedShippingInfo: null
 }
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
@@ -29,6 +32,8 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     logoEl.addEventListener('click', function () {
         state.showBestSellings = false
         state.showOrderSection = false
+        state.paymentRecived = false,
+        state.submitedShippingInfo = null
         state.selectedItem = ''
         state.type = ''
         state.search = ''
@@ -37,6 +42,8 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     homeLiEl.addEventListener('click', function () {
         state.showBestSellings = false
         state.showOrderSection = false
+        state.paymentRecived = false,
+        state.submitedShippingInfo = null
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -45,6 +52,8 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
     bestSellingLiEl.addEventListener('click', function () {
         state.showBestSellings = true
         state.showOrderSection = false
+        state.paymentRecived = false,
+        state.submitedShippingInfo = null
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -184,10 +193,15 @@ function renderMain() {
 
     document.body.append(mainEl);
 }
+
 function renderOrderProduct(cake) {
     mainEl.innerHTML = ''
     const orderInformationSection = document.createElement('section')
     orderInformationSection.setAttribute('class', 'order-information')
+
+    const message = document.createElement('h3')
+    message.textContent = 'Thanks for your order, you will hear from us soon!'
+    message.style.display = 'none'
 
     const orderInfo = document.createElement('div')
     orderInfo.setAttribute('class', 'order-info')
@@ -214,16 +228,29 @@ function renderOrderProduct(cake) {
     const decreaseButton = document.createElement('button')
     decreaseButton.setAttribute('class', 'product-button')
     decreaseButton.textContent = '-'
+    decreaseButton.addEventListener('click',function(){
+        state.orderQuantity--
+        if(state.orderQuantity < 1){
+            state.showOrderSection = false
+            state.orderQuantity = 1
+        }
+        render()
+    })
 
     const quantitySpanEl = document.createElement('span')
-    quantitySpanEl.textContent = ' 0 '
-
+    quantitySpanEl.textContent = ` ${state.orderQuantity} `
     const increaseButton = document.createElement('button')
     increaseButton.setAttribute('class', 'product-button')
     increaseButton.textContent = '+'
+    
+    increaseButton.addEventListener('click',function(){
+        state.orderQuantity++ 
 
+        render()
+    })
+    const totalToPay = getTotalToPay(cake)
     const priceLi = document.createElement('li')
-    priceLi.textContent = `${cake.price} €`
+    priceLi.textContent = `${totalToPay}€`
 
     const orderInfoTitle = document.createElement('h3')
     orderInfoTitle.setAttribute('class', 'order-information__title')
@@ -248,6 +275,10 @@ function renderOrderProduct(cake) {
     inputSurname.setAttribute('type', 'surname')
     inputSurname.setAttribute('required', 'required')
 
+    if(state.user !== null){
+        inputName.setAttribute('value',`${state.user.name}`)
+        inputSurname.setAttribute('value',`${state.user.surname}`)
+    } 
     const labelCity = document.createElement('label')
     labelCity.setAttribute('for', 'city')
     labelCity.textContent = 'City: '
@@ -338,7 +369,8 @@ function renderOrderProduct(cake) {
     checkOutButtonEl.setAttribute('type', 'submit')
     checkOutButtonEl.textContent = 'Check Out'
 
-    mainEl.append(orderInformationSection)
+   
+    mainEl.append(orderInformationSection, message)
     orderInformationSection.append(orderInfo, paymentInfo)
     orderInfo.append(cardInfo, orderInfoTitle, shippingForm)
     cardInfo.append(cardInfoTitle, cardListProductUlEl)
@@ -348,7 +380,64 @@ function renderOrderProduct(cake) {
     shippingForm.append(labelName, inputName, labelSurname, inputSurname, labelCity, inputCity, labelTel, inputTel, labelAddress, inputAddress, labelDateAndTime, inputDateAndTime, submitInput)
     paymentInfo.append(paymentTitle, paymentForm)
     paymentForm.append(visaImageEl, labelNameOnCard, inputNameOnCard, labelCreditCardNumber, inputCreditCardNumber, labelExpirationDate, inputExpirationDate, labelCvv, inputCvv, checkOutButtonEl)
+    
+    let user = state.user
+
+    shippingForm.addEventListener('submit',function(event){
+        event.preventDefault()
+        const id = cake.id
+        const quantity = state.orderQuantity
+        const city = inputCity.value
+        const tel = inputTel.value
+        const address = inputAddress.value
+        const cakeToArrive = inputDateAndTime.value
+
+        state.submitedShippingInfo = [{id, quantity, city, tel,address, cakeToArrive }]
+
+        user.orders = state.submitedShippingInfo
+        
+        render()
+        
+    })
+    paymentForm.addEventListener('submit',function(event){
+        event.preventDefault()
+        if(state.submitedShippingInfo !== null){
+            state.paymentRecived = true
+            render()
+        }
+        else{
+            alert('please give us shipping information!')
+            render()
+        }
+    })
+
+    if(state.submitedShippingInfo !== null) {
+        orderInfo.style.display = 'none'
+    }
+    if(state.paymentRecived) {
+        paymentInfo.style.display = 'none' 
+        message.style.display = 'block'
+    }
+
+    if(state.submitedShippingInfo && state.paymentRecived){
+        updateCakeOrdersInServer(user)
+        cake.orderNumber = cake.orderNumber + state.orderQuantity
+        updateCakeItemInServer(cake)
+    }
 }
+function getTotalToPay(cake){
+    return cake.price * state.orderQuantity
+}
+function updateCakeOrdersInServer(user) {
+    fetch(`http://localhost:3000/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+}
+
 function createCakeCard(cake) {
     const cakeCard = document.createElement('div');
     cakeCard.setAttribute('class', 'cake-card');
@@ -455,9 +544,14 @@ function renderDetailsPage(cake) {
     buttonEl.setAttribute('class', 'order_btn');
     buttonEl.textContent = 'Order now';
     buttonEl.addEventListener('click', function () {
-        state.showOrderSection = true;
 
-        render()
+        if(state.user !== null){
+            state.showOrderSection = true;
+            render()
+        }
+        else{
+            renderSignInToOrderModal()
+        }
     })
     //Append cakeTitle,  priceTypeLikeContainer, cakeDescription and buttonEl to cakeProperties:
     cakeProperties.append(cakeTitle, priceTypeLikeContainer, cakeDescription, buttonEl);
@@ -731,6 +825,7 @@ function renderRegisterModal() {
     })
     modal.append(closeBtn, modalTitle, formEl);
 }
+
 function renderWelcomeModal() {
 
     const modal = document.createElement('div');
@@ -744,6 +839,28 @@ function renderWelcomeModal() {
     titleEL.textContent = `Welcome ${state.user.name}!`;
 
     modal.append(closeBtn, titleEL);
+}
+function renderSignInToOrderModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'sign-in-to-order-modal');
+
+    const closeBtn = document.createElement('button');
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h2');
+    titleEl.textContent = 'Please sign in to Order Cake!';
+
+    const tryAgainBtn = document.createElement('button');
+    tryAgainBtn.setAttribute('class', 'try-again-btn');
+    tryAgainBtn.textContent = 'Sign in now!';
+
+    tryAgainBtn.addEventListener('click', function (event) {
+        event.stopPropagation()
+        state.modal = 'signIn';
+        render();
+    })
+
+    modal.append(closeBtn, titleEl, tryAgainBtn);
 }
 function renderFailedAccessModal() {
     const modal = document.createElement('div');
@@ -788,6 +905,7 @@ function renderGreetingModal() {
     signOutBtn.addEventListener('click', event => {
         event.stopPropagation();
         state.user = null;
+        state.showOrderSection = false
         state.modal = ''
         render();
     })
@@ -877,6 +995,12 @@ function renderModals() {
     }
     if (state.modal === 'failed') {
         renderFailedAccessModal();
+    }
+    if(state.modal === 'notSignedIn'){
+        renderSignInToOrderModal()
+    }
+    if(state.modal === 'procedToPayment'){
+        renderMakeAPayment()
     }
     if (state.modal === 'greeting') {
         renderGreetingModal();

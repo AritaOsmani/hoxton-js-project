@@ -6,8 +6,8 @@
       "image": "images/cake_1.jpg",
       "price": 30,
       "type": "christmas",
-      "orderNumber": 3,
-      "likes": 35,
+      "orderNumber": 13,
+      "likes": 36,
       "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
     },
@@ -17,7 +17,7 @@
       "image": "images/cake_2.jpg",
       "price": 20,
       "type": "christmas",
-      "orderNumber": 5,
+      "orderNumber": 27,
       "likes": 17,
       "dislikes": 2,
       "description": "An edible festive gnome sits on this extra deep Christmas cake decorated as a tree trunk with ivy, snowflake and toadstool details. Available in vanilla or chocolate sponge. "
@@ -28,7 +28,7 @@
       "image": "images/cake_3.jpg",
       "price": 25,
       "type": "birthdays",
-      "orderNumber": 3,
+      "orderNumber": 6,
       "likes": 51,
       "dislikes": 2,
       "description": "This delicious afternoon tea cake with floral vintage tiered cake-stand and tea set intricately hand-crafted by our expert Cake Decorators will make your occasion truly memorable"
@@ -39,7 +39,7 @@
       "image": "images/cake_4.jpg",
       "price": 25,
       "type": "birthdays",
-      "orderNumber": 5,
+      "orderNumber": 6,
       "likes": 21,
       "dislikes": 3,
       "description": "This is the perfect cake for a fan of farming or farm animals, with a red tractor plus cute sheep, chicks and pigs wallowing in 'mud'."
@@ -225,7 +225,11 @@
       "orders": [
         {
           "id": 1,
-          "quantity": 1
+          "quantity": 1,
+          "city": "Prishtine",
+          "tel": "044255255",
+          "streetAddress": "Bekim Bugari",
+          "cakeToArrive": 1
         },
         {
           "id": 2,
@@ -269,7 +273,16 @@
       "name": "ed",
       "surname": "putans",
       "password": "ed",
-      "orders": []
+      "orders": [
+        {
+          "id": 2,
+          "quantity": 1,
+          "city": "Rahovec",
+          "tel": "0455",
+          "address": "besimB",
+          "cakeToArrive": "2021-12-23T17:59"
+        }
+      ]
     }
   ]
 }
