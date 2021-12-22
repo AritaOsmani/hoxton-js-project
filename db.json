@@ -128,7 +128,7 @@
       "price": 20,
       "type": "christmas",
       "orderNumber": 5,
-      "likes": 200,
+      "likes": 201,
       "dislikes": 3,
       "description": "A cheeky cake which for many goes perfectly with 2020! An icing 'poo', Santa hat and face mask adorns your delicious Christmas cake, available in vanilla or chocolate sponge, or rich fruit cake."
     },
@@ -382,6 +382,9 @@
         },
         {
           "cakeId": 8
+        },
+        {
+          "cakeId": 12
         }
       ]
     }
