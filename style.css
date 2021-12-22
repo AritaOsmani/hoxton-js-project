@@ -366,6 +366,7 @@ footer{
     place-content: center;
     gap: 0.3rem;
     padding: 2rem;
+    width:300px;
 }
 
 /*Modal styling*/
