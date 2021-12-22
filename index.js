@@ -535,11 +535,14 @@ function renderDetailsPage(cake) {
 
     //Likes
     const heartIcon = document.createElement('i');
-    heartIcon.setAttribute('class', 'fas fa-heart');
 
+    heartIcon.setAttribute('class', 'far fa-heart')
 
 
     if (state.user !== null) {
+        if (state.user.likedProducts.find(like => like.cakeId === cake.id)) {
+            heartIcon.setAttribute('class', 'fas fa-heart');
+        }
         const newCommentForm = document.createElement('form');
         newCommentForm.setAttribute('class', 'new-comment-section-form');
 
@@ -566,9 +569,14 @@ function renderDetailsPage(cake) {
 
         //Add likes if a user is loged in
         heartIcon.addEventListener('click', () => {
-            cake.likes++;
-            updateCakeItemInServer(cake);
-            render();
+            if (!state.user.likedProducts.find(like => like.cakeId === cake.id)) {
+                cake.likes++;
+                state.user.likedProducts.push({ cakeId: cake.id });
+                updateUserInServer(state.user);
+                updateCakeItemInServer(cake);
+                render();
+            }
+
 
         })
     }
@@ -689,6 +697,7 @@ function render() {
     renderMain()
     renderFooter()
     renderModals();
+    console.log('Hello')
 }
 function renderSearchModal() {
     const modal = document.createElement('div')
@@ -1118,7 +1127,7 @@ function signIn(email, userPassword) {
             state.modal = 'failed';
         }
         render();
-    }).catch(() => alert('User does not exist'))
+    }).catch((e) => alert(e))
 }
 
 function checkUser(userName) {
@@ -1150,6 +1159,15 @@ function addUserToServer(name, surname, email, password) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ "id": email, "name": name, "surname": surname, "password": password, "orders": [] })
+    })
+}
+function updateUserInServer(user) {
+    fetch(`http://localhost:3000/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
     })
 }
 

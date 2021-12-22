@@ -665,13 +665,13 @@ label{
     padding-top: 2px;
 }
 
- /* @media screen and (max-width:600px){
+ @media screen and (max-width:600px){
     .main-container{
         display: grid;
      
         grid-template:
-        "cake-properties cake-properties" 400px,
-        "image-and-comments image-and-comments" 400px/
+        "cake-properties cake-properties" auto
+        "image-and-comments image-and-comments" auto/
         1fr 1fr;
     }
     .image-container{
@@ -681,7 +681,7 @@ label{
      
         grid-area: cake-properties;
     }
-}  */
+} 
 
 /*Scroll styling*/
 .comments-wrapper::-webkit-scrollbar{

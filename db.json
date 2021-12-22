@@ -7,7 +7,7 @@
       "price": 30,
       "type": "christmas",
       "orderNumber": 14,
-      "likes": 38,
+      "likes": 52,
       "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
     },
@@ -18,7 +18,7 @@
       "price": 20,
       "type": "christmas",
       "orderNumber": 29,
-      "likes": 17,
+      "likes": 20,
       "dislikes": 2,
       "description": "An edible festive gnome sits on this extra deep Christmas cake decorated as a tree trunk with ivy, snowflake and toadstool details. Available in vanilla or chocolate sponge. "
     },
@@ -29,7 +29,7 @@
       "price": 25,
       "type": "birthdays",
       "orderNumber": 6,
-      "likes": 52,
+      "likes": 54,
       "dislikes": 2,
       "description": "This delicious afternoon tea cake with floral vintage tiered cake-stand and tea set intricately hand-crafted by our expert Cake Decorators will make your occasion truly memorable"
     },
@@ -40,7 +40,7 @@
       "price": 25,
       "type": "birthdays",
       "orderNumber": 6,
-      "likes": 21,
+      "likes": 25,
       "dislikes": 3,
       "description": "This is the perfect cake for a fan of farming or farm animals, with a red tractor plus cute sheep, chicks and pigs wallowing in 'mud'."
     },
@@ -73,7 +73,7 @@
       "price": 40,
       "type": "birthdays",
       "orderNumber": 5,
-      "likes": 61,
+      "likes": 63,
       "dislikes": 3,
       "description": "A cake handbag carrying a bottle of champagne! Ideal for a handbag fan's special occasion and available in vanilla or chocolate sponge."
     },
@@ -282,6 +282,14 @@
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2021-12-22T18:20"
         }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        },
+        {
+          "cakeId": 3
+        }
       ]
     },
     {
@@ -297,6 +305,14 @@
           "tel": "3652615263",
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2022-01-01T20:51"
+        }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        },
+        {
+          "cakeId": 7
         }
       ]
     },
@@ -314,6 +330,11 @@
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2021-12-31T20:53"
         }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        }
       ]
     },
     {
@@ -329,6 +350,23 @@
           "tel": "0455",
           "address": "besimB",
           "cakeToArrive": "2021-12-23T17:59"
+        }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        },
+        {
+          "cakeId": 2
+        },
+        {
+          "cakeId": 3
+        },
+        {
+          "cakeId": 4
+        },
+        {
+          "cakeId": 7
         }
       ]
     }
