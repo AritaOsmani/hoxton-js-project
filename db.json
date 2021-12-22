@@ -6,7 +6,7 @@
       "image": "images/cake_1.jpg",
       "price": 30,
       "type": "christmas",
-      "orderNumber": 14,
+      "orderNumber": 16,
       "likes": 38,
       "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
@@ -265,6 +265,12 @@
       "body": "C",
       "userId": "arita@email.com",
       "id": 11
+    },
+    {
+      "cakeId": 3,
+      "body": "Beautiful cake!",
+      "userId": "arita@email.com",
+      "id": 12
     }
   ],
   "users": [
@@ -329,6 +335,22 @@
           "tel": "0455",
           "address": "besimB",
           "cakeToArrive": "2021-12-23T17:59"
+        },
+        {
+          "id": 1,
+          "quantity": 1,
+          "city": "London",
+          "tel": "1111111",
+          "address": "aaaaaaa",
+          "cakeToArrive": "2022-01-01T14:28"
+        },
+        {
+          "id": 1,
+          "quantity": 1,
+          "city": "Pristina",
+          "tel": "3652615263",
+          "address": "w",
+          "cakeToArrive": "2021-12-24T14:29"
         }
       ]
     }

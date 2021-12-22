@@ -36,7 +36,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = false
+            state.submitedShippingInfo = false
         state.selectedItem = ''
         state.type = ''
         state.search = ''
@@ -46,7 +46,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = false
+            state.submitedShippingInfo = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -56,7 +56,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = true
         state.showOrderSection = false
         state.paymentRecived = false,
-        state.submitedShippingInfo = false
+            state.submitedShippingInfo = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -203,7 +203,7 @@ function renderOrderProduct(cake) {
     orderInformationSection.setAttribute('class', 'order-information')
 
     const message = document.createElement('h3')
-    message.setAttribute('class','thanks-for-order__message')
+    message.setAttribute('class', 'thanks-for-order__message')
     message.textContent = 'Thanks for your order, you will hear from us soon!✔'
     message.style.display = 'none'
 
@@ -215,7 +215,7 @@ function renderOrderProduct(cake) {
 
     const cardInfoTitle = document.createElement('h3')
     cardInfoTitle.setAttribute('class', 'order-information__title')
-    cardInfoTitle.textContent = 'Shopping Cart.'
+    cardInfoTitle.textContent = 'Shopping Cart'
 
     const cardListProductUlEl = document.createElement('ul')
     cardListProductUlEl.classList.add('card-info__product')
@@ -258,7 +258,7 @@ function renderOrderProduct(cake) {
 
     const orderInfoTitle = document.createElement('h3')
     orderInfoTitle.setAttribute('class', 'order-information__title')
-    orderInfoTitle.textContent = 'Shipping Information.'
+    orderInfoTitle.textContent = 'Shipping Information'
 
     const shippingForm = document.createElement('form')
     shippingForm.setAttribute('class', 'shipping-form')
@@ -323,7 +323,7 @@ function renderOrderProduct(cake) {
     paymentInfo.setAttribute('class', 'payment-info')
     paymentInfo.style.display = 'none'
     const paymentTitle = document.createElement('h3')
-    paymentTitle.textContent = 'Payment Info.'
+    paymentTitle.textContent = 'Payment Info'
 
     const paymentForm = document.createElement('form')
 
@@ -407,14 +407,14 @@ function renderOrderProduct(cake) {
     })
     paymentForm.addEventListener('submit', function (event) {
         event.preventDefault()
-        
+
         state.paymentRecived = true
-        
+
         render()
-        
+
     })
-    if(state.submitedShippingInfo){
-        
+    if (state.submitedShippingInfo) {
+
         orderInfo.style.display = 'none'
         paymentInfo.style.display = 'block'
     }
@@ -425,7 +425,7 @@ function renderOrderProduct(cake) {
     if (state.submitedShippingInfo && state.paymentRecived) {
         updateCakeOrdersInServer(user)
 
-        updateCakeItemInServer(cake)        
+        updateCakeItemInServer(cake)
     }
 }
 function getTotalToPay(cake) {
@@ -691,9 +691,9 @@ function render() {
     renderMain()
     renderFooter()
     renderModals();
-    if(state.user !== null){
+    if (state.user !== null) {
         state.bag = getOrders(state.user.id)
-    }else state.bag = []
+    } else state.bag = []
 }
 function renderSearchModal() {
     const modal = document.createElement('div')
@@ -1025,7 +1025,7 @@ function renderWelcomeNewUserModal() {
 
     modal.append(closeBtn, titleEl, parEl, signInButton);
 }
-function renderMakeAPayment(){
+function renderMakeAPayment() {
     const modal = document.createElement('div');
     modal.setAttribute('class', 'proced-to-payment-modal');
 
@@ -1069,7 +1069,7 @@ function modalWrapperElements(modal, closeBtn) {
     modalWrapper.setAttribute('class', 'modal-wrapper');
     closeBtn.setAttribute('class', 'close-btn');
     closeBtn.textContent = 'X';
-    
+
     modalWrapper.addEventListener('click', function () {
         state.modal = ''
         render()
@@ -1194,9 +1194,9 @@ function findCakeComments(cake) {
 function findAuthorInServer(id) {
     return fetch(`http://localhost:3000/users/${id}`).then(res => res.json())
 }
-function getOrders(id){
+function getOrders(id) {
     return fetch(`http://localhost:3000/users/${id}`).then(resp => resp.json()).then(resp => state.bag = resp.orders)
- }
+}
 function addCommentToServer(cakeId, comment, author) {
     return fetch('http://localhost:3000/comments', {
         method: "POST",
