@@ -6,7 +6,7 @@
       "image": "images/cake_1.jpg",
       "price": 30,
       "type": "christmas",
-      "orderNumber": 13,
+      "orderNumber": 15,
       "likes": 36,
       "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
@@ -17,8 +17,8 @@
       "image": "images/cake_2.jpg",
       "price": 20,
       "type": "christmas",
-      "orderNumber": 27,
-      "likes": 17,
+      "orderNumber": 28,
+      "likes": 18,
       "dislikes": 2,
       "description": "An edible festive gnome sits on this extra deep Christmas cake decorated as a tree trunk with ivy, snowflake and toadstool details. Available in vanilla or chocolate sponge. "
     },
@@ -28,7 +28,7 @@
       "image": "images/cake_3.jpg",
       "price": 25,
       "type": "birthdays",
-      "orderNumber": 6,
+      "orderNumber": 7,
       "likes": 51,
       "dislikes": 2,
       "description": "This delicious afternoon tea cake with floral vintage tiered cake-stand and tea set intricately hand-crafted by our expert Cake Decorators will make your occasion truly memorable"
@@ -50,7 +50,7 @@
       "image": "images/cake_5.jpg",
       "price": 15,
       "type": "birthdays",
-      "orderNumber": 7,
+      "orderNumber": 8,
       "likes": 101,
       "dislikes": 3,
       "description": "Wow, a child's dream cake for a party - extra deep, with pastel icing drips, covered in sweets and biscuits with starburst topper! Available in vanilla or chocolate sponge."
@@ -61,7 +61,7 @@
       "image": "images/cake_6.jpg",
       "price": 20,
       "type": "birthdays",
-      "orderNumber": 6,
+      "orderNumber": 7,
       "likes": 25,
       "dislikes": 3,
       "description": "Amaze your child with this fantastic Batman themed cake with edible bat signal, city skyline and of course the Batmobile on top. Available in vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake."
@@ -275,12 +275,12 @@
       "password": "ed",
       "orders": [
         {
-          "id": 2,
+          "id": 1,
           "quantity": 1,
           "city": "Rahovec",
           "tel": "0455",
           "address": "besimB",
-          "cakeToArrive": "2021-12-23T17:59"
+          "cakeToArrive": "2021-12-16T19:14"
         }
       ]
     }

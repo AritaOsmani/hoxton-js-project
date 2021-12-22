@@ -999,9 +999,6 @@ function renderModals() {
     if(state.modal === 'notSignedIn'){
         renderSignInToOrderModal()
     }
-    if(state.modal === 'procedToPayment'){
-        renderMakeAPayment()
-    }
     if (state.modal === 'greeting') {
         renderGreetingModal();
     }
