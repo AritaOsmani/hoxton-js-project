@@ -178,7 +178,8 @@ footer{
 /*Details Page*/
 .main-container{
     display: grid;
-    grid-template-columns: 500px 600px;
+    /* grid-template-columns: 500px 600px; */
+    grid-template-columns: repeat(auto-fit,minmax(300px,500px));
     justify-content: center;
     gap:30px;
     padding: 20px;
@@ -595,7 +596,7 @@ label{
     padding:10px;
     display: grid;
     gap:10px;
-    width:500px;
+    /* width:500px; */
 }
 .comments-wrapper{
     padding:20px;
@@ -663,3 +664,21 @@ label{
     padding-left:10px;
     padding-top: 2px;
 }
+
+ /* @media screen and (max-width:600px){
+    .main-container{
+        display: grid;
+     
+        grid-template:
+        "cake-properties cake-properties" 400px,
+        "image-and-comments image-and-comments" 400px/
+        1fr 1fr;
+    }
+    .image-container{
+        grid-area:image-and-comments;
+    }
+    .cake-prop-container{
+     
+        grid-area: cake-properties;
+    }
+}  */
