@@ -682,3 +682,14 @@ label{
         grid-area: cake-properties;
     }
 }  */
+
+/*Scroll styling*/
+.comments-wrapper::-webkit-scrollbar{
+    width:5px;
+    
+    /* background-color: #6B011F; */
+}
+.comments-wrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+}
