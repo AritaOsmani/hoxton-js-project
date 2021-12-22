@@ -84,7 +84,7 @@
       "price": 25,
       "type": "birthdays",
       "orderNumber": 50,
-      "likes": 151,
+      "likes": 152,
       "dislikes": 3,
       "description": "Colourful and joyous two-tier cake adorned in sugarcraft rainbows, flowers, butterflies and, of course, an adorable pink my little pony princess  - this will make your child's day!"
     },
@@ -271,6 +271,12 @@
       "body": "Beautiful cake!",
       "userId": "arita@email.com",
       "id": 12
+    },
+    {
+      "cakeId": 1,
+      "body": "Already liked",
+      "userId": "ed@email.com",
+      "id": 13
     }
   ],
   "users": [
@@ -288,6 +294,14 @@
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2021-12-22T18:20"
         }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        },
+        {
+          "cakeId": 3
+        }
       ]
     },
     {
@@ -303,6 +317,14 @@
           "tel": "3652615263",
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2022-01-01T20:51"
+        }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        },
+        {
+          "cakeId": 7
         }
       ]
     },
@@ -320,6 +342,11 @@
           "address": "dsadsdfgfdg",
           "cakeToArrive": "2021-12-31T20:53"
         }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
+        }
       ]
     },
     {
@@ -335,22 +362,26 @@
           "tel": "0455",
           "address": "besimB",
           "cakeToArrive": "2021-12-23T17:59"
+        }
+      ],
+      "likedProducts": [
+        {
+          "cakeId": 1
         },
         {
-          "id": 1,
-          "quantity": 1,
-          "city": "London",
-          "tel": "1111111",
-          "address": "aaaaaaa",
-          "cakeToArrive": "2022-01-01T14:28"
+          "cakeId": 2
         },
         {
-          "id": 1,
-          "quantity": 1,
-          "city": "Pristina",
-          "tel": "3652615263",
-          "address": "w",
-          "cakeToArrive": "2021-12-24T14:29"
+          "cakeId": 3
+        },
+        {
+          "cakeId": 4
+        },
+        {
+          "cakeId": 7
+        },
+        {
+          "cakeId": 8
         }
       ]
     }
