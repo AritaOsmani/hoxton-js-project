@@ -1118,7 +1118,7 @@ function signIn(email, userPassword) {
             state.modal = 'failed';
         }
         render();
-    })
+    }).catch(() => alert('User does not exist'))
 }
 
 function checkUser(userName) {
