@@ -186,10 +186,11 @@ function renderMain() {
 
     if (state.selectedItem !== '' && state.showOrderSection) renderOrderProduct(state.selectedItem)
     else if (state.selectedItem !== '') {
-
+        mainEl.setAttribute('class', 'main-class')
         renderDetailsPage(state.selectedItem);
     }
     else {
+        mainEl.classList.remove('main-class');
         renderCardItems(cakeContainer);
         mainEl.append(pageTitle, cakeContainer);
     }
