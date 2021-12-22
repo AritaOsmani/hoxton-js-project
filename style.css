@@ -178,7 +178,8 @@ footer{
 /*Details Page*/
 .main-container{
     display: grid;
-    grid-template-columns: 500px 600px;
+    /* grid-template-columns: 500px 600px; */
+    grid-template-columns: repeat(auto-fit,minmax(300px,500px));
     justify-content: center;
     gap:30px;
     padding: 20px;
@@ -669,4 +670,14 @@ label{
     font-weight: bold;
     padding-left:10px;
     padding-top: 2px;
+}
+/*Scroll styling*/
+.comments-wrapper::-webkit-scrollbar{
+    width:5px;
+    
+    /* background-color: #6B011F; */
+}
+.comments-wrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
 }
