@@ -14,9 +14,11 @@ const state = {
     showOrderSection: false,
     orderQuantity: 1,
     paymentRecived: false,
-    submitedShippingInfo: null,
-    comments: []
+    submitedShippingInfo: false,
+    comments: [],
+    bag: []
 }
+
 function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
 
@@ -34,7 +36,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-            state.submitedShippingInfo = null
+        state.submitedShippingInfo = false
         state.selectedItem = ''
         state.type = ''
         state.search = ''
@@ -44,7 +46,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = false
         state.showOrderSection = false
         state.paymentRecived = false,
-            state.submitedShippingInfo = null
+        state.submitedShippingInfo = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -54,7 +56,7 @@ function listenToLeftMenuHeader(logoEl, homeLiEl, bestSellingLiEl) {
         state.showBestSellings = true
         state.showOrderSection = false
         state.paymentRecived = false,
-            state.submitedShippingInfo = null
+        state.submitedShippingInfo = false
         state.type = ''
         state.selectedItem = ''
         state.search = ''
@@ -201,7 +203,8 @@ function renderOrderProduct(cake) {
     orderInformationSection.setAttribute('class', 'order-information')
 
     const message = document.createElement('h3')
-    message.textContent = 'Thanks for your order, you will hear from us soon!'
+    message.setAttribute('class','thanks-for-order__message')
+    message.textContent = 'Thanks for your order, you will hear from us soon!✔'
     message.style.display = 'none'
 
     const orderInfo = document.createElement('div')
@@ -318,7 +321,7 @@ function renderOrderProduct(cake) {
 
     const paymentInfo = document.createElement('div')
     paymentInfo.setAttribute('class', 'payment-info')
-
+    paymentInfo.style.display = 'none'
     const paymentTitle = document.createElement('h3')
     paymentTitle.textContent = 'Payment Info.'
 
@@ -393,37 +396,36 @@ function renderOrderProduct(cake) {
         const address = inputAddress.value
         const cakeToArrive = inputDateAndTime.value
 
-        state.submitedShippingInfo = [{ id, quantity, city, tel, address, cakeToArrive }]
+        state.modal = 'procedToPayment'
 
-        user.orders = state.submitedShippingInfo
-
+        state.bag.push({ id, quantity, city, tel, address, cakeToArrive })
+        user.orders = state.bag
+        cake.orderNumber = cake.orderNumber + state.orderQuantity
+        state.submitedShippingInfo = true
         render()
 
     })
     paymentForm.addEventListener('submit', function (event) {
         event.preventDefault()
-        if (state.submitedShippingInfo !== null) {
-            state.paymentRecived = true
-            render()
-        }
-        else {
-            alert('please give us shipping information!')
-            render()
-        }
+        
+        state.paymentRecived = true
+        
+        render()
+        
     })
-
-    if (state.submitedShippingInfo !== null) {
+    if(state.submitedShippingInfo){
+        
         orderInfo.style.display = 'none'
+        paymentInfo.style.display = 'block'
     }
     if (state.paymentRecived) {
         paymentInfo.style.display = 'none'
         message.style.display = 'block'
     }
-
     if (state.submitedShippingInfo && state.paymentRecived) {
         updateCakeOrdersInServer(user)
-        cake.orderNumber = cake.orderNumber + state.orderQuantity
-        updateCakeItemInServer(cake)
+
+        updateCakeItemInServer(cake)        
     }
 }
 function getTotalToPay(cake) {
@@ -689,6 +691,9 @@ function render() {
     renderMain()
     renderFooter()
     renderModals();
+    if(state.user !== null){
+        state.bag = getOrders(state.user.id)
+    }else state.bag = []
 }
 function renderSearchModal() {
     const modal = document.createElement('div')
@@ -1020,6 +1025,19 @@ function renderWelcomeNewUserModal() {
 
     modal.append(closeBtn, titleEl, parEl, signInButton);
 }
+function renderMakeAPayment(){
+    const modal = document.createElement('div');
+    modal.setAttribute('class', 'proced-to-payment-modal');
+
+    const closeBtn = document.createElement('button');
+
+    modalWrapperElements(modal, closeBtn);
+
+    const titleEl = document.createElement('h5');
+    titleEl.textContent = 'Succesfully added shipping info please make a payment to complete order';
+
+    modal.append(closeBtn, titleEl);
+}
 function renderUserAlreadyExistsModal() {
     const modal = document.createElement('div');
     modal.setAttribute('class', 'user-already-exists-modal');
@@ -1051,10 +1069,11 @@ function modalWrapperElements(modal, closeBtn) {
     modalWrapper.setAttribute('class', 'modal-wrapper');
     closeBtn.setAttribute('class', 'close-btn');
     closeBtn.textContent = 'X';
-
+    
     modalWrapper.addEventListener('click', function () {
         state.modal = ''
         render()
+        console.log('hej')
     })
 
     closeBtn.addEventListener('click', () => {
@@ -1175,6 +1194,9 @@ function findCakeComments(cake) {
 function findAuthorInServer(id) {
     return fetch(`http://localhost:3000/users/${id}`).then(res => res.json())
 }
+function getOrders(id){
+    return fetch(`http://localhost:3000/users/${id}`).then(resp => resp.json()).then(resp => state.bag = resp.orders)
+ }
 function addCommentToServer(cakeId, comment, author) {
     return fetch('http://localhost:3000/comments', {
         method: "POST",
