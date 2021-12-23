@@ -8,7 +8,6 @@
       "type": "christmas",
       "orderNumber": 16,
       "likes": 38,
-      "dislikes": 2,
       "description": "This impressive extra-deep buttercream cake has festive green and red touches and edible holly and candy canes. Choose from vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake. "
     },
     {
@@ -19,7 +18,6 @@
       "type": "christmas",
       "orderNumber": 43,
       "likes": 17,
-      "dislikes": 2,
       "description": "An edible festive gnome sits on this extra deep Christmas cake decorated as a tree trunk with ivy, snowflake and toadstool details. Available in vanilla or chocolate sponge. "
     },
     {
@@ -30,7 +28,6 @@
       "type": "birthdays",
       "orderNumber": 7,
       "likes": 52,
-      "dislikes": 2,
       "description": "This delicious afternoon tea cake with floral vintage tiered cake-stand and tea set intricately hand-crafted by our expert Cake Decorators will make your occasion truly memorable"
     },
     {
@@ -41,7 +38,6 @@
       "type": "birthdays",
       "orderNumber": 6,
       "likes": 21,
-      "dislikes": 3,
       "description": "This is the perfect cake for a fan of farming or farm animals, with a red tractor plus cute sheep, chicks and pigs wallowing in 'mud'."
     },
     {
@@ -52,7 +48,6 @@
       "type": "birthdays",
       "orderNumber": 7,
       "likes": 101,
-      "dislikes": 3,
       "description": "Wow, a child's dream cake for a party - extra deep, with pastel icing drips, covered in sweets and biscuits with starburst topper! Available in vanilla or chocolate sponge."
     },
     {
@@ -63,7 +58,6 @@
       "type": "birthdays",
       "orderNumber": 6,
       "likes": 25,
-      "dislikes": 3,
       "description": "Amaze your child with this fantastic Batman themed cake with edible bat signal, city skyline and of course the Batmobile on top. Available in vanilla sponge, chocolate sponge, carrot cake, red velvet sponge or rich fruit cake."
     },
     {
@@ -74,7 +68,6 @@
       "type": "birthdays",
       "orderNumber": 5,
       "likes": 61,
-      "dislikes": 3,
       "description": "A cake handbag carrying a bottle of champagne! Ideal for a handbag fan's special occasion and available in vanilla or chocolate sponge."
     },
     {
@@ -85,7 +78,6 @@
       "type": "birthdays",
       "orderNumber": 50,
       "likes": 152,
-      "dislikes": 3,
       "description": "Colourful and joyous two-tier cake adorned in sugarcraft rainbows, flowers, butterflies and, of course, an adorable pink my little pony princess  - this will make your child's day!"
     },
     {
@@ -96,7 +88,6 @@
       "type": "christmas",
       "orderNumber": 5,
       "likes": 20,
-      "dislikes": 3,
       "description": "This retro Christmas cake has beautifully hand-crafted sugarcraft decorations. It's an impressive cake for the festive period, available in vanilla or chocolate sponge, or rich fruit cake."
     },
     {
@@ -107,7 +98,6 @@
       "type": "christmas",
       "orderNumber": 5,
       "likes": 20,
-      "dislikes": 3,
       "description": "A beautiful buttercream wreath with red bow on top of a delicious Christmas cake, this will make an excellent centrepiece at your festive celebration."
     },
     {
@@ -118,7 +108,6 @@
       "type": "christmas",
       "orderNumber": 5,
       "likes": 70,
-      "dislikes": 3,
       "description": "A chocoholic Christmas cake with chocolate buttercream, chocolates and wrapped in a gold bow. This cake will help you have a quality Christmas."
     },
     {
@@ -129,7 +118,6 @@
       "type": "christmas",
       "orderNumber": 5,
       "likes": 201,
-      "dislikes": 3,
       "description": "A cheeky cake which for many goes perfectly with 2020! An icing 'poo', Santa hat and face mask adorns your delicious Christmas cake, available in vanilla or chocolate sponge, or rich fruit cake."
     },
     {
@@ -140,7 +128,6 @@
       "type": "christmas",
       "orderNumber": 5,
       "likes": 30,
-      "dislikes": 3,
       "description": "An extra-deep cake with chocolate drips, buttercream rosettes and sugarcraft Christmas decorations, this will help your Christmas to feel truly special. Available in fresh vanilla or chocolate sponge."
     },
     {
@@ -151,7 +138,6 @@
       "type": "weddings",
       "orderNumber": 5,
       "likes": 30,
-      "dislikes": 3,
       "description": "This striking monochrome 2-tiered stacked wedding cake will look and taste perfect on your very special day. Choose from our special range of delicious sponge and filling options."
     },
     {
@@ -162,7 +148,6 @@
       "type": "weddings",
       "orderNumber": 50,
       "likes": 100,
-      "dislikes": 3,
       "description": "With a beautifully hand-crafted marble-effect fondant covered extra deep base under an elegant ivory second tier, this wedding cake is simple, modern and impactful."
     },
     {
@@ -173,7 +158,6 @@
       "type": "weddings",
       "orderNumber": 20,
       "likes": 100,
-      "dislikes": 3,
       "description": "A stunning 3-tiered stacked vanilla wedding cake frosted in vanilla buttercream with your choice of filling and decorated with exquisite hand-crafted sugar flowers."
     },
     {
@@ -184,7 +168,6 @@
       "type": "weddings",
       "orderNumber": 30,
       "likes": 20,
-      "dislikes": 3,
       "description": "A 3-tiered chocolate sponge wedding cake surrounded by Belgian chocolate cigarillos and chocolate flakes, topped with fresh seasonal fruits."
     },
     {
@@ -195,8 +178,37 @@
       "type": "weddings",
       "orderNumber": 5,
       "likes": 20,
-      "dislikes": 3,
       "description": "This delicious 3-tiered chocolate sponge is covered in Belgian chocolate with malt balls and fresh flowers."
+    },
+    {
+      "id": 19,
+      "title": "Woodland Dream",
+      "image": "images/cake_19.jpg",
+      "price": 85,
+      "type": "weddings",
+      "orderNumber": 7,
+      "likes": 25,
+      "description": "3 decadent woodland-style towers of chocolate sponge covered in Belgian chocolate (milk, dark, white) with hand-crafted chocolate curls and roses."
+    },
+    {
+      "id": 20,
+      "title": "The White Tower",
+      "image": "images/cake_20.jpg",
+      "price": 100,
+      "type": "weddings",
+      "orderNumber": 7,
+      "likes": 25,
+      "description": "4-tiered vanilla or chocolate sponge covered in white chocolate cigarillos, drizzled with milk chocolate, topped with fresh flowers."
+    },
+    {
+      "id": 21,
+      "title": "Dragon and castle",
+      "image": "images/cake_21.jpg",
+      "price": 20,
+      "type": "birthdays",
+      "orderNumber": 4,
+      "likes": 30,
+      "description": "An amazing castle cake with towers and a dragon perched on the battlements! Mike the Knight is keeping guard. This stunning cake is available in vanilla or chocolate sponge, and is sure to delight your child on their special birthday."
     }
   ],
   "comments": [
