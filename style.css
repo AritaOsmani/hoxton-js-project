@@ -11,10 +11,18 @@
     padding:0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
+a{
+    color:unset;
+    text-decoration: unset;
+}
 body{
     /* background-color:#FFEBCC ; */
     font-family: sans-serif;
     height:100vh;
+    
 }
 img{
     width:100%;
@@ -156,6 +164,7 @@ footer{
 }
 .logo-title{
     font-family: 'Playball', cursive;
+    cursor: pointer;
 }
 .social-media{
     display: grid;
