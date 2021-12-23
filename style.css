@@ -650,7 +650,7 @@ label{
    height: 40px;
    border-radius: 50%;
    margin-top:5px;
-   margin-left:5px;
+   margin-left:2px;
 }
 .author-comment{
     display: grid;
@@ -730,5 +730,6 @@ label{
     }
     header{
         display: block;
+        padding:10px 0;
     }
 }

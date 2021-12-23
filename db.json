@@ -209,6 +209,36 @@
       "orderNumber": 4,
       "likes": 30,
       "description": "An amazing castle cake with towers and a dragon perched on the battlements! Mike the Knight is keeping guard. This stunning cake is available in vanilla or chocolate sponge, and is sure to delight your child on their special birthday."
+    },
+    {
+      "id": 22,
+      "title": "Football and scarf",
+      "image": "images/cake_22.jpg",
+      "price": 30,
+      "type": "birthdays",
+      "orderNumber": 5,
+      "likes": 30,
+      "description": "Footie fans will love this domed 'football' cake with blue and white scarf."
+    },
+    {
+      "id": 23,
+      "title": "Hand-crafted sugar roses",
+      "image": "images/cake_23.jpg",
+      "price": 50,
+      "type": "birthdays",
+      "orderNumber": 5,
+      "likes": 40,
+      "description": "A delightful cake topped with hand-crafted sugar roses and number, such a stunning cake is sure to impress at your special event."
+    },
+    {
+      "id": 24,
+      "title": "Pink cake with white chocolate drips - extra deep",
+      "image": "images/cake_24.jpg",
+      "price": 35,
+      "type": "birthdays",
+      "orderNumber": 3,
+      "likes": 10,
+      "description": "This funky extra-deep cake is decorated with tempered white chocolate shards, curls and drips, pink rosettes and edible gold leaf. Available in vanilla, chocolate or red velvet sponge, this celebration cake will be a tasty centrepiece at your special occasion."
     }
   ],
   "comments": [
