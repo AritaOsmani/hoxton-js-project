@@ -77,7 +77,7 @@
       "price": 25,
       "type": "birthdays",
       "orderNumber": 50,
-      "likes": 152,
+      "likes": 153,
       "description": "Colourful and joyous two-tier cake adorned in sugarcraft rainbows, flowers, butterflies and, of course, an adorable pink my little pony princess  - this will make your child's day!"
     },
     {
@@ -262,7 +262,11 @@
       "surname": "Osmani",
       "password": "arita",
       "orders": [],
-      "likedProducts": []
+      "likedProducts": [
+        {
+          "cakeId": 8
+        }
+      ]
     },
     {
       "id": "besim@email.com",

@@ -278,6 +278,7 @@ footer{
     font-size: 20px;
     margin-right:5px;
     color: var(--pink);
+    cursor: pointer;
 }
 .order-information{
     display: grid;
