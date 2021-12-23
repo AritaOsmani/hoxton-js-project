@@ -277,6 +277,12 @@
       "body": "Already liked",
       "userId": "ed@email.com",
       "id": 13
+    },
+    {
+      "cakeId": 12,
+      "body": "What a beautiful cake!",
+      "userId": "ed@email.com",
+      "id": 14
     }
   ],
   "users": [

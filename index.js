@@ -109,6 +109,7 @@ function renderHeader() {
     rightMenuHeaderEl.setAttribute('class', 'header-menu')
     const searchLiEl = document.createElement('li')
     searchLiEl.setAttribute('class', 'header-menu__item')
+    searchLiEl.classList.add('class', 'search-button')
 
     const searchButton = document.createElement('button')
     const searchIconEl = document.createElement('i')

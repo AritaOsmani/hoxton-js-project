@@ -722,4 +722,13 @@ label{
      
         grid-area: cake-properties;
     }
-} 
+    .official-logo{
+        display: none;
+    }
+    .search-button{
+        display: none;
+    }
+    header{
+        display: block;
+    }
+}
