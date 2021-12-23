@@ -23,7 +23,7 @@ function getItemsToDisplay() {
     let itemsToDisplay = state.cakes;
 
     if (state.showBestSellings) {
-        itemsToDisplay = itemsToDisplay.filter(cake => cake.orderNumber > 5)
+        itemsToDisplay = itemsToDisplay.filter(cake => cake.orderNumber > 10)
     }
     itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
 
