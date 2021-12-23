@@ -660,9 +660,12 @@ function renderDetailsPage(cake) {
 function renderFooter() {
 
     footerEl.innerHTML = ''
+    const logoLink = document.createElement('a');
+    logoLink.setAttribute('href', '#');
     const logoTitleEl = document.createElement('h2')
     logoTitleEl.setAttribute('class', 'logo-title')
-    logoTitleEl.textContent = 'Albulena Cakes'
+    logoTitleEl.textContent = 'Albulena Cakes';
+    logoLink.append(logoTitleEl);
 
     const socialMediaEl = document.createElement('div')
     socialMediaEl.setAttribute('class', 'social-media')
@@ -687,7 +690,7 @@ function renderFooter() {
     inImageEl.setAttribute('alt', 'instagram-logo')
 
     document.body.append(footerEl)
-    footerEl.append(logoTitleEl, socialMediaEl)
+    footerEl.append(logoLink, socialMediaEl)
     socialMediaEl.append(pEl, facebookTagEl, instagramTagEl)
     facebookTagEl.append(fbImageEl)
     instagramTagEl.append(inImageEl)
