@@ -25,6 +25,7 @@ function getItemsToDisplay() {
     if (state.showBestSellings) {
         itemsToDisplay = itemsToDisplay.filter(cake => cake.orderNumber > 10)
     }
+
     itemsToDisplay = itemsToDisplay.filter(cake => cake.type.includes(state.type))
 
     if (state.search !== '') itemsToDisplay = itemsToDisplay.filter(cake => cake.title.toUpperCase().includes(state.search.toUpperCase()))
@@ -1179,7 +1180,7 @@ function addUserToServer(name, surname, email, password) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ "id": email, "name": name, "surname": surname, "password": password, "orders": [] })
+        body: JSON.stringify({ "id": email, "name": name, "surname": surname, "password": password, "orders": [], "likedProducts": [] })
     })
 }
 function updateUserInServer(user) {
